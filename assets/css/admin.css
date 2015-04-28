@@ -8,13 +8,14 @@ h3.trigger {
 }
 
 h3.trigger:before {
-	content: "\f139";
+	content: "\f132"; /* "\f139"; */
 	font-family: 'Dashicons';
 	font-style: normal;
 	speak: none;
 	font-weight: normal;
 	-webkit-font-smoothing: antialiased;
 	padding-right:10px;
+	vertical-align: middle;
 }
 
 h3.trigger a {
@@ -29,7 +30,7 @@ h3.trigger a:hover {
 }
 
 h3.trigger.active:before {
-	content: "\f140";
+	content: "\f460"; /* "\f140"; */
 	font-family: 'Dashicons';
 	font-style: normal;
 	speak: none;
