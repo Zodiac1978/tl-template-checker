@@ -66,7 +66,7 @@ foreach ( $scanned_files as $plugin_name => $files ) {
 			echo '</div>';
 		}
 
-		echo '<hr style="margin: 25px 0">';
+		echo '<hr style="margin: 10px 0 15px 0">';
 
 	}
 }
