@@ -34,42 +34,44 @@ foreach ( $template_paths as $plugin_name => $template_path ) {
 }
 foreach ( $scanned_files as $plugin_name => $files ) {
 	foreach ( $files as $file ) {
-	if (! strpos($file, '.php') ) { continue; } // skip if no php file
-	if ( file_exists( get_stylesheet_directory() . '/' . $file ) ) {
-		$theme_file = get_stylesheet_directory() . '/' . $file;
-	} else {
-		$theme_file = false;
-	}
-	
-	if ( $theme_file ) {
-		$core_version = TPLC_Admin_Status::get_file_content( get_template_directory() . '/' . $file );
-
-		$theme_version = TPLC_Admin_Status::get_file_content( $theme_file );
-
-		/* $args = array(
-			'title'           => 'Differences',
-			'title_left'      => 'Parent Theme',
-			'title_right'     => 'Child Theme'
-		); */
-
-		$diff_table = wp_text_diff($core_version,$theme_version);
-		echo '<h3 class="trigger">Diff for template file: ' . $file . '</h3>';
-
-		if ($diff_table) {
-			echo '<div class="diff-wrapper">';
-			echo '<table class="diff diffheader"><tr><th>Parent Theme</th><th style="width: 4%;">&nbsp;</th><th>Child Theme</th></tr></table>';
-			echo $diff_table;
-			echo '</div>';
+		if (! strpos($file, '.php') ) { continue; } // skip if no php file
+		if ( file_exists( get_stylesheet_directory() . '/' . $file ) ) {
+			$theme_file = get_stylesheet_directory() . '/' . $file;
 		} else {
-			echo '<div class="diff-wrapper">';
-			echo '<p class="diff">No differences.</p>';
-			echo '</div>';
+			$theme_file = false;
 		}
+		
+		if ( $theme_file ) {
+			$core_version = TPLC_Admin_Status::get_file_content( get_template_directory() . '/' . $file );
 
-		echo '<hr style="margin: 10px 0 15px 0">';
+			$theme_version = TPLC_Admin_Status::get_file_content( $theme_file );
 
+			/* Broken table if used: @link https://core.trac.wordpress.org/ticket/25473
+
+			$args = array(
+				'title'           => 'Differences',
+				'title_left'      => 'Parent Theme',
+				'title_right'     => 'Child Theme'
+			); */
+
+			$diff_table = wp_text_diff($core_version,$theme_version);
+			echo '<h3 class="trigger">' . __('Diff for template file:', 'template-checker') . ' ' . $file . '</h3>';
+
+			if ($diff_table) {
+				echo '<div class="diff-wrapper">';
+				echo '<table class="diff diffheader"><tr><th>Parent Theme</th><th style="width: 4%;">&nbsp;</th><th>Child Theme</th></tr></table>';
+				echo $diff_table;
+				echo '</div>';
+			} else {
+				echo '<div class="diff-wrapper">';
+				echo '<p class="diff">No differences.</p>';
+				echo '</div>';
+			}
+
+			echo '<hr style="margin: 10px 0 15px 0">';
+
+		}
 	}
-}
 }
 ?>
 
