@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Template Checker\n"
 "POT-Creation-Date: 2015-04-29 15:56+0100\n"
-"PO-Revision-Date: 2015-04-29 15:57+0100\n"
+"PO-Revision-Date: 2015-04-29 16:34+0100\n"
 "Last-Translator: Torsten Landsiedel <torsten.landsiedel@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -110,7 +110,7 @@ msgstr ""
 #: includes/admin/class-wc-admin-menus.php:32
 #: includes/admin/views/html-admin-page-status.php:5
 msgid "Template Check"
-msgstr ""
+msgstr "Template-Check"
 
 #: includes/admin/class-wc-admin-status.php:61
 msgid "Product Transients Cleared"
@@ -251,7 +251,7 @@ msgstr ""
 
 #: includes/admin/views/html-admin-page-status-diff.php:58
 msgid "Diff for template file:"
-msgstr ""
+msgstr "Unterschiede für die PHP-Datei:"
 
 #: includes/admin/views/html-admin-page-status-diff.php:62
 msgid "Parent Theme"
@@ -275,6 +275,8 @@ msgid ""
 "<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
 "date. The parent theme version is <strong>%s</strong>"
 msgstr ""
+"<code>%s</code> Version <strong style=\"color:red\">%s</strong> ist "
+"veraltet. Die Version aus dem Eltern-Theme lautet <strong>%s</strong>"
 
 #: includes/admin/views/html-admin-page-status-report.php:44
 #, php-format
@@ -282,11 +284,13 @@ msgid ""
 "<code>%s</code> Child theme is missing @version info. The parent theme "
 "version is <strong>%s</strong>"
 msgstr ""
+"<code>%s</code> Child-Theme hat keine @version-Information im Header. Die "
+"Version aus dem Eltern-Theme lautet <strong>%s</strong>"
 
 #: includes/admin/views/html-admin-page-status-report.php:46
 #, php-format
 msgid "<code>%s</code> Parent theme is missing @version info."
-msgstr ""
+msgstr "<code>%s</code> Eltern-Theme hat keine @version-Information im Header."
 
 #: includes/admin/views/html-admin-page-status-report.php:57
 #: includes/admin/views/html-admin-page-status-report.php:58
@@ -296,7 +300,7 @@ msgstr "Überschriebene Child-Theme-Dateien"
 
 #: includes/admin/views/html-admin-page-status-report.php:67
 msgid "No overrides present in child theme."
-msgstr ""
+msgstr "Im Child-Theme werden keine PHP-Dateien überschrieben."
 
 #: includes/admin/views/html-admin-page-status.php:6
 msgid "Diff"

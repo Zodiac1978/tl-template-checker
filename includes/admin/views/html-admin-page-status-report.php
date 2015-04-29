@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <table class="wc_status_table widefat" cellspacing="0" id="status">
 	<thead>
 	<tr>
-		<th colspan="2"><?php _e( 'Templates', 'woocommerce' ); ?></th>
+		<th colspan="2"><?php _e( 'Templates', 'tl-template-checker' ); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -39,11 +39,11 @@ foreach ( $scanned_files as $plugin_name => $files ) {
 		$theme_version = TPLC_Admin_Status::get_file_version( $theme_file );
 
 		if ( $core_version && $theme_version && ( version_compare( $theme_version, $core_version, '<' ) ) ) {
-			$found_files[ $plugin_name ][] = sprintf( __( '<code>%s</code> version <strong style="color:red">%s</strong> is out of date. The parent theme version is <strong>%s</strong>', 'woocommerce' ), basename( $theme_file ), $theme_version ? $theme_version : '-', $core_version );
+			$found_files[ $plugin_name ][] = sprintf( __( '<code>%s</code> version <strong style="color:red">%s</strong> is out of date. The parent theme version is <strong>%s</strong>', 'tl-template-checker' ), basename( $theme_file ), $theme_version ? $theme_version : '-', $core_version );
 		} elseif ( ! $theme_version && $core_version ) {
-			$found_files[ $plugin_name ][] = sprintf( __( '<code>%s</code> Child theme is missing @version info. The parent theme version is <strong>%s</strong>', 'woocommerce' ), basename( $theme_file ), $core_version );
+			$found_files[ $plugin_name ][] = sprintf( __( '<code>%s</code> Child theme is missing @version info. The parent theme version is <strong>%s</strong>', 'tl-template-checker' ), basename( $theme_file ), $core_version );
 		} elseif ( ! $core_version ) {
-			$found_files[ $plugin_name ][] = sprintf( __( '<code>%s</code> Parent theme is missing @version info.', 'woocommerce' ), basename( $theme_file ) );
+			$found_files[ $plugin_name ][] = sprintf( __( '<code>%s</code> Parent theme is missing @version info.', 'tl-template-checker' ), basename( $theme_file ) );
 		} else {
 			$found_files[ $plugin_name ][] = sprintf( '<code>%s</code>', basename( $theme_file ) );
 		}
@@ -54,8 +54,8 @@ if ( $found_files ) {
 	foreach ( $found_files as $plugin_name => $found_plugin_files ) {
 	?>
 		<tr>
-		<!-- <td><?php _e( 'Child Theme Overrides', 'woocommerce' ); ?> (<?php echo $plugin_name; ?>):</td> -->
-		<td><?php _e( 'Child Theme Overrides', 'woocommerce' ); ?> (<?php echo wp_get_theme(); ?>):</td>
+		<!-- <td><?php _e( 'Child Theme Overrides', 'tl-template-checker' ); ?> (<?php echo $plugin_name; ?>):</td> -->
+		<td><?php _e( 'Child Theme Overrides', 'tl-template-checker' ); ?> (<?php echo wp_get_theme(); ?>):</td>
 		<td><?php echo implode( ', <br/>', $found_plugin_files ); ?></td>
 		</tr>
 	<?php
@@ -63,8 +63,8 @@ if ( $found_files ) {
 } else {
 ?>
 	<tr>
-	<td><?php _e( 'Child Theme Overrides', 'woocommerce' ); ?>:</td>
-	<td><?php _e( 'No overrides present in child theme.', 'woocommerce' ); ?></td>
+	<td><?php _e( 'Child Theme Overrides', 'tl-template-checker' ); ?>:</td>
+	<td><?php _e( 'No overrides present in child theme.', 'tl-template-checker' ); ?></td>
 	</tr>
 <?php
 }
