@@ -7,8 +7,8 @@
  * Author URI:  http://torstenlandsiedel.de
  * Plugin URI:  http://torstenlandsiedel.de
  * Text Domain: tl-template-checker
- * License:     GPLv3
- * License URI: http://www.gnu.org/licenses/gpl-3.0
+ * License:     GPLv2
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
 
