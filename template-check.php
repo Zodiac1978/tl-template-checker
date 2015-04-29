@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Child-Theme-Template-Checker
  * Description: This plugins can warn you about old template files in your child theme
- * Version:     1.0.0
+ * Version:     0.1.0
  * Author:      Torsten Landsiedel
  * Author URI:  http://torstenlandsiedel.de
  * Plugin URI:  http://torstenlandsiedel.de
@@ -15,10 +15,7 @@
 /**
 * Debug/Status page
 *
-* @author WooThemes
-* @category Admin
-* @package WooCommerce/Admin/System Status
-* @version 2.2.0
+* @since 0.1.0
 */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -41,7 +38,7 @@ add_action( 'admin_enqueue_scripts', 'tl_tlpc_styles_template_check' );
 /**
  * Load plugin textdomain.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 function tl_tplc_load_plugin_textdomain() {
 	if ( is_admin() ) {
