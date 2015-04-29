@@ -70,3 +70,4 @@ if ( $found_files ) {
 }
 ?>
 </tbody>
+</table>

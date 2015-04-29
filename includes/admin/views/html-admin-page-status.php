@@ -1,5 +1,6 @@
 <div class="wrap woocommerce">
-	<div class="icon32 icon32-woocommerce-status" id="icon-woocommerce"><br /></div><h2 class="nav-tab-wrapper woo-nav-tab-wrapper">
+	<div class="icon32 icon32-woocommerce-status" id="icon-woocommerce"><br /></div>
+	<h2 class="nav-tab-wrapper woo-nav-tab-wrapper">
 		<?php
 			$tabs = array(
 				'status' => __( 'Template Check', 'tl-template-checker' ),
