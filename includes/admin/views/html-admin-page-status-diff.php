@@ -53,8 +53,11 @@ foreach ( $scanned_files as $plugin_name => $files ) {
 				'title_left'      => 'Parent Theme',
 				'title_right'     => 'Child Theme'
 			); */
+			
+			// This is important and is missing in codex :(
+			$args = array( 'show_split_view' => true ); 
 
-			$diff_table = wp_text_diff($core_version,$theme_version);
+			$diff_table = wp_text_diff( $core_version, $theme_version, $args);
 			echo '<h3 class="trigger">' . __('Diff for template file:', 'tl-template-checker') . ' ' . $file . '</h3>';
 
 			if ($diff_table) {
