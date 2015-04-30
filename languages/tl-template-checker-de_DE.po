@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Template Checker\n"
 "POT-Creation-Date: 2015-04-29 15:56+0100\n"
-"PO-Revision-Date: 2015-04-29 16:34+0100\n"
+"PO-Revision-Date: 2015-05-01 00:04+0100\n"
 "Last-Translator: Torsten Landsiedel <torsten.landsiedel@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -251,7 +251,7 @@ msgstr ""
 
 #: includes/admin/views/html-admin-page-status-diff.php:58
 msgid "Diff for template file:"
-msgstr "Unterschiede für die PHP-Datei:"
+msgstr "Unterschiede in der PHP-Datei:"
 
 #: includes/admin/views/html-admin-page-status-diff.php:62
 msgid "Parent Theme"
