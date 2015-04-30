@@ -7,7 +7,7 @@
 				'diff'  => __( 'Diff', 'tl-template-checker' ),
 			);
 			foreach ( $tabs as $name => $label ) {
-				echo '<a href="' . admin_url( 'admin.php?page=wc-status&tab=' . $name ) . '" class="nav-tab ';
+				echo '<a href="' . admin_url( 'admin.php?page=wc-status&amp;tab=' . $name ) . '" class="nav-tab ';
 				if ( $current_tab == $name ) echo 'nav-tab-active';
 				echo '">' . $label . '</a>';
 			}
