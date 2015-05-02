@@ -46,12 +46,3 @@ function tl_tplc_load_plugin_textdomain() {
   	}
 }
 add_action( 'plugins_loaded', 'tl_tplc_load_plugin_textdomain' );
-
-
-/*
-
-ToDo:
---------------------------
-* Übersetzungsdatei hinzufügen / Textdomain anpassen
-
-*/
