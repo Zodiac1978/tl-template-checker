@@ -30,7 +30,6 @@ class TPLC_Admin_Menus {
 	 */
 	public function status_menu() {
 		add_submenu_page( 'tools.php',  __( 'Template Check', 'tl-template-checker' ), __( 'Template Check', 'tl-template-checker' ), 'manage_options', 'wc-status', array( $this, 'status_page' ) );
-		//register_setting( 'woocommerce_status_settings_fields', 'woocommerce_status_options' );
 	}
 
 	/**
