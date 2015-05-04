@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author 		WooThemes
  * @category 	Admin
  * @package 	WooCommerce/Admin
- * @version     2.1.0
+ * @version     2.1.0 
  */
 class TPLC_Admin {
 
@@ -25,17 +25,16 @@ class TPLC_Admin {
 	 * Include any classes we need within admin.
 	 */
 	public function includes() {
+		
 		// Functions
 		include_once( 'wc-admin-functions.php' );
 
-		// Classes we only need if the ajax is not-ajax
-		
-			include( 'class-wc-admin-menus.php' );
+		// Menus
+		include( 'class-wc-admin-menus.php' );
 
-			// Help
-			include( 'class-wc-admin-help.php' );
+		// Help
+		include( 'class-wc-admin-help.php' );
 		
-
 	}
 
 }

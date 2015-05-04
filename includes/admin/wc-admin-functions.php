@@ -16,26 +16,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return array
  */
 function tplc_get_screen_ids() {
-	$wc_screen_id = sanitize_title( __( 'WooCommerce', 'tl-template-checker' ) );
 
-    return apply_filters( 'woocommerce_screen_ids', array(
-    	'toplevel_page_' . $wc_screen_id,
-    	$wc_screen_id . '_page_wc-reports',
-    	$wc_screen_id . '_page_wc-settings',
-    	$wc_screen_id . '_page_wc-status',
-        $wc_screen_id . '_page_wc-addons',
-    	'product_page_product_attributes',
-    	'edit-shop_order',
-    	'shop_order',
-    	'edit-product',
-    	'product',
-    	'edit-shop_coupon',
-    	'shop_coupon',
-    	'edit-product_cat',
-    	'edit-product_tag',
-    	'edit-product_shipping_class'
-    ) );
+    $wc_screen_id = sanitize_title( __( 'WooCommerce', 'woocommerce' ) );
+    $screen_ids   = array(
+        'tools_page_wc-status',
+    );
+
+    return apply_filters( 'woocommerce_screen_ids', $screen_ids );
 }
+
+
 
 /**
  * Create a page and store the ID in an option.
