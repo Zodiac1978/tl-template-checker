@@ -60,3 +60,6 @@ abbr[title] {
 	border-bottom: 1px dotted currentcolor;
 	cursor: help;
 }
+.tplc_status_table td, .tplc_status_table td ol, .tplc_status_table td p, .tplc_status_table td ul {
+    line-height: 1.8;
+}

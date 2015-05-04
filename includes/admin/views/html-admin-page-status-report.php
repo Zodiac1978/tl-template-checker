@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<table class="wc_status_table widefat" cellspacing="0" id="status">
+<table class="tplc_status_table widefat" cellspacing="0" id="status">
 	<thead>
 	<tr>
 		<th colspan="2"><?php _e( 'Templates', 'tl-template-checker' ); ?></th>
