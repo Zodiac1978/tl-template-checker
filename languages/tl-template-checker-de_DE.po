@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Template Checker\n"
 "POT-Creation-Date: 2015-05-04 17:33+0100\n"
-"PO-Revision-Date: 2015-05-04 17:42+0100\n"
+"PO-Revision-Date: 2015-05-04 17:46+0100\n"
 "Last-Translator: Torsten Landsiedel <torsten.landsiedel@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -109,7 +109,7 @@ msgid ""
 "strong> matches parent theme."
 msgstr ""
 "%s <code>%s</code>: Child-Theme-Version <strong style=\"color:green\">%s</"
-"strong> ist mit Eltern-Theme identisch."
+"strong> ist mit Version aus dem Eltern-Theme identisch."
 
 #: includes/admin/views/html-admin-page-status-report.php:87
 #, php-format
@@ -117,8 +117,8 @@ msgid ""
 "Template overrides by <abbr title=\"Child theme\">%s</abbr> for <abbr title="
 "\"Parent theme\">%s</abbr>:"
 msgstr ""
-"<abbr title=\"Child Theme\">%s</abbr> überschreibt die folgenden Dateien von "
-"<abbr title=\"Parent theme\">%s</abbr>:"
+"<abbr title=\"Child-Theme\">%s</abbr> überschreibt die folgenden Dateien von "
+"<abbr title=\"Eltern-Theme\">%s</abbr>:"
 
 #: includes/admin/views/html-admin-page-status-report.php:98
 msgid "Child Theme Overrides"
