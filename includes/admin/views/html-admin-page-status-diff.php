@@ -84,7 +84,7 @@ jQuery( function($) {
 						);
 					}
 
-					echo '<hr style="margin: 10px 0 15px 0">';
+					echo '<hr class="tplc_diff_hr">';
 
 				}
 			}

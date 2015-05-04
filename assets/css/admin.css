@@ -63,3 +63,9 @@ abbr[title] {
 .tplc_status_table td, .tplc_status_table td ol, .tplc_status_table td p, .tplc_status_table td ul {
     line-height: 1.8;
 }
+.tplc_diff_hr {
+    margin: 10px 0 15px 0;
+}
+.tplc_diff_hr:last-of-type {
+	display: none;
+}
