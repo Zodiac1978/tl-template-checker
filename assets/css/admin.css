@@ -14,7 +14,7 @@ h3.trigger:before {
 	font-weight: normal;
 	font-style: normal;
 	padding-right: 10px;
-	content: '\f132'; /* "\f139"; */
+	content: '\f132';
 	vertical-align: middle;
 	speak: none;
 	-webkit-font-smoothing: antialiased;
@@ -29,7 +29,7 @@ h3.trigger a:hover {
 	color: #0489b7;
 }
 h3.trigger.active:before {
-	content: '\f460'; /* "\f140"; */
+	content: '\f460';
 }
 h3.toggle-white {
 	background-color: #fff;
@@ -51,10 +51,15 @@ h3.trigger + div.toggle_container p:last-of-type {
 	/*I use this, because if a toggle_container only contains 1 paragraph, it won't actually create a "p" to surround it, but if there's a couple, it will. This removes the extra padding on the last paragraph  */
 	margin-bottom: 0;
 }
-pre.nodiff {
+.nodiff {
 	background-color: #f5f5f5;
-	line-height: 3;
 	text-align: center;
+    font-family: Consolas,Monaco,monospace;
+    font-size: 14px;
+    line-height: 1.618;
+    padding: 0.5em;
+    vertical-align: top;
+    word-wrap: break-word;
 }
 abbr[title] {
 	border-bottom: 1px dotted currentcolor;
@@ -62,6 +67,9 @@ abbr[title] {
 }
 .tplc_status_table td, .tplc_status_table td ol, .tplc_status_table td p, .tplc_status_table td ul {
     line-height: 1.8;
+}
+table.diff tbody tr th:nth-child(2) {
+    width: 4%;
 }
 .tplc_diff_hr {
     margin: 10px 0 15px 0;

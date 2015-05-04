@@ -79,7 +79,7 @@ jQuery( function($) {
 						);
 					} else {
 						printf(
-							'<div class="diff-wrapper"><pre class="diff nodiff">%s</pre></div>',
+							'<div class="diff-wrapper"><div class="diff nodiff">%s</div></div>',
 							__( 'No differences.', 'tl-template-checker')
 						);
 					}
