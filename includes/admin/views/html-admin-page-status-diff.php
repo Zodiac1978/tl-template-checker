@@ -9,11 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <script>
-jQuery(function($){
-	$(document).ready(function(){
-		$(".diff-wrapper").hide();
-		$("h3.trigger").click(function(){
-			$(this).toggleClass("active").next(".diff-wrapper").slideToggle("normal");
+jQuery( function($) {
+	$(document).ready( function() {
+		$( '.diff-wrapper' ).hide();
+		$( 'h3.trigger' ).click( function() {
+			$(this).toggleClass( 'active' ).next( '.diff-wrapper' ).slideToggle( 'fast' );
 			return false; //Prevent the browser jump to the link anchor
 		});
 	});
@@ -22,61 +22,73 @@ jQuery(function($){
 
 <div class="revisions-diff-frame">
 	<div class="revisions-diff">
+		<?php
 
-<?php
+		$template_paths = array ( get_template_directory() . '/' );
 
-$template_paths = array ( get_template_directory() . '/' );
-
-$scanned_files = array();
-$found_files = array();
-foreach ( $template_paths as $plugin_name => $template_path ) {
-	$scanned_files[ $plugin_name ] = TPLC_Admin_Status::scan_template_files( $template_path );
-}
-foreach ( $scanned_files as $plugin_name => $files ) {
-	foreach ( $files as $file ) {
-		if (! strpos($file, '.php') ) { continue; } // skip if no php file
-		if ( file_exists( get_stylesheet_directory() . '/' . $file ) ) {
-			$theme_file = get_stylesheet_directory() . '/' . $file;
-		} else {
-			$theme_file = false;
+		$scanned_files = array();
+		$found_files   = array();
+		foreach ( $template_paths as $plugin_name => $template_path ) {
+			$scanned_files[ $plugin_name ] = TPLC_Admin_Status::scan_template_files( $template_path );
 		}
-		
-		if ( $theme_file ) {
-			$core_version = TPLC_Admin_Status::get_file_content( get_template_directory() . '/' . $file );
+		foreach ( $scanned_files as $plugin_name => $files ) {
+			foreach ( $files as $file ) {
 
-			$theme_version = TPLC_Admin_Status::get_file_content( $theme_file );
+				// skip if no php file
+				if ( ! strpos( $file, '.php' ) )
+					continue;
 
-			/* Broken table if used: @link https://core.trac.wordpress.org/ticket/25473
+				$child_path = get_stylesheet_directory() . '/' . $file;
 
-			$args = array(
-				'title'           => 'Differences',
-				'title_left'      => 'Parent Theme',
-				'title_right'     => 'Child Theme'
-			); */
-			
-			// This is important and is missing in codex :(
-			$args = array( 'show_split_view' => true ); 
+				// Exclude functions.php
+				if ( file_exists( $child_path ) && basename( $file ) !== 'functions.php' ) {
+					$theme_file = get_stylesheet_directory() . '/' . $file;
+				} else {
+					$theme_file = false;
+				}
 
-			$diff_table = wp_text_diff( $core_version, $theme_version, $args);
-			echo '<h3 class="trigger">' . __('Diff for template file:', 'tl-template-checker') . ' ' . $file . '</h3>';
+				if ( $theme_file ) {
+					$core_version = TPLC_Admin_Status::get_file_content( get_template_directory() . '/' . $file );
 
-			if ($diff_table) {
-				echo '<div class="diff-wrapper">';
-				echo '<table class="diff diffheader"><tr><th>' . __( 'Parent Theme', 'tl-template-checker') . '</th><th style="width: 4%;">&nbsp;</th><th>' . __( 'Child Theme', 'tl-template-checker') . '</th></tr></table>';
-				echo $diff_table;
-				echo '</div>';
-			} else {
-				echo '<div class="diff-wrapper">';
-				echo '<p class="diff">' . __( 'No differences.', 'tl-template-checker') . '</p>';
-				echo '</div>';
+					$theme_version = TPLC_Admin_Status::get_file_content( $theme_file );
+
+					/* Broken table if used: @link https://core.trac.wordpress.org/ticket/25473
+
+					$args = array(
+						'title'           => 'Differences',
+						'title_left'      => 'Parent Theme',
+						'title_right'     => 'Child Theme'
+					); */
+
+					// This is important and is missing in codex :(
+					$args = array( 'show_split_view' => true );
+
+					$diff_table = wp_text_diff( $core_version, $theme_version, $args );
+					printf(
+						'<h3 class="trigger">%s %s</h3>',
+						__('Diff for template file:', 'tl-template-checker'),
+						$file
+					);
+
+					if ( $diff_table ) {
+						printf(
+							'<div class="diff-wrapper"><table class="diff diffheader"><tr><th>%s</th><th>&#160;</th><th>%s</th></tr></table>%s</div>',
+							__( 'Parent Theme', 'tl-template-checker'),
+							__( 'Child Theme', 'tl-template-checker'),
+							$diff_table
+						);
+					} else {
+						printf(
+							'<div class="diff-wrapper"><pre class="diff nodiff">%s</pre></div>',
+							__( 'No differences.', 'tl-template-checker')
+						);
+					}
+
+					echo '<hr style="margin: 10px 0 15px 0">';
+
+				}
 			}
-
-			echo '<hr style="margin: 10px 0 15px 0">';
-
 		}
-	}
-}
-?>
-
+		?>
 	</div>
 </div>
