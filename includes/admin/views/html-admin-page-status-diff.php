@@ -42,7 +42,7 @@ jQuery( function($) {
 
 				// Exclude functions.php
 				if ( file_exists( $child_path ) && basename( $file ) !== 'functions.php' ) {
-					$theme_file = get_stylesheet_directory() . '/' . $file;
+					$theme_file = $child_path;
 				} else {
 					$theme_file = false;
 				}

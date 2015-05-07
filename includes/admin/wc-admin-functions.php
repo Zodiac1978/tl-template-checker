@@ -17,12 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 function tplc_get_screen_ids() {
 
-    $wc_screen_id = sanitize_title( __( 'WooCommerce', 'woocommerce' ) );
     $screen_ids   = array(
         'tools_page_wc-status',
     );
 
-    return apply_filters( 'woocommerce_screen_ids', $screen_ids );
+    return $screen_ids;
 }
 
 
