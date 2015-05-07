@@ -30,10 +30,13 @@ class TPLC_Admin {
 		include_once( 'wc-admin-functions.php' );
 
 		// Menus
-		include( 'class-wc-admin-menus.php' );
+		include_once( 'class-wc-admin-menus.php' );
+		
+		// Notices
+		include_once( 'class-wc-admin-notices.php' ); 
 
 		// Help
-		include( 'class-wc-admin-help.php' );
+		include_once( 'class-wc-admin-help.php' );
 		
 	}
 
