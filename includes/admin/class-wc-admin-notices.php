@@ -29,13 +29,8 @@ class TPLC_Admin_Notices {
 	 * Constructor
 	 */
 	public function __construct() {
-		//add_action( 'switch_theme', array( $this, 'reset_admin_notices' ) );
-		//add_action( 'woocommerce_installed', array( $this, 'reset_admin_notices' ) );
-		//add_action( 'wp_loaded', array( $this, 'hide_notices' ) );
-		//add_action( 'woocommerce_hide_install_notice', array( $this, 'hide_install_notice' ) );
-		//add_action( 'woocommerce_hide_translation_upgrade_notice', array( $this, 'hide_translation_upgrade_notice' ) );
-		//add_action( 'admin_print_styles', array( $this, 'add_notices' ) );
-		add_action( 'admin_print_styles', array( $this, 'reset_admin_notices' ) );
+		add_action( 'switch_theme', array( $this, 'reset_admin_notices' ) );
+		add_action( 'wp_loaded', array( $this, 'hide_notices' ) );
 		add_action( 'admin_print_styles', array( $this, 'add_notices' ) );
 	}
 
@@ -77,10 +72,9 @@ class TPLC_Admin_Notices {
 	 * Hide a notice if the GET variable is set.
 	 */
 	public function hide_notices() {
-		if ( isset( $_GET['wc-hide-notice'] ) ) {
-			$hide_notice = sanitize_text_field( $_GET['wc-hide-notice'] );
+		if ( isset( $_GET['hide_template_files_notice'] ) ) {
+			$hide_notice = sanitize_text_field( $_GET['hide_template_files_notice'] );
 			self::remove_notice( $hide_notice );
-			do_action( 'woocommerce_hide_' . $hide_notice . '_notice' );
 		}
 	}
 
