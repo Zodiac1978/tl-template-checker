@@ -20,7 +20,7 @@ class TPLC_Admin_Status {
 	/**
 	 * Handles output of the reports page in admin.
 	 */
-	public function output() {
+	static public function output() {
 		$current_tab = ! empty( $_REQUEST['tab'] ) ? sanitize_title( $_REQUEST['tab'] ) : 'status';
 
 		include_once( 'views/html-admin-page-status.php' );
@@ -29,7 +29,7 @@ class TPLC_Admin_Status {
 	/**
 	 * Handles output of report
 	 */
-	public function status_report() {
+	static public function status_report() {
 		global $woocommerce, $wpdb;
 
 		include_once( 'views/html-admin-page-status-report.php' );
@@ -38,7 +38,7 @@ class TPLC_Admin_Status {
 	/**
 	 * Handles output of diff
 	 */
-	public function status_diff() {
+	static public function status_diff() {
 		global $woocommerce, $wpdb;
 
 		include_once( 'views/html-admin-page-status-diff.php' );
@@ -52,7 +52,7 @@ class TPLC_Admin_Status {
 	 * @param string $file Path to the file
 	 * @param array $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
 	 */
-	public function get_file_content( $file ) {
+	static public function get_file_content( $file ) {
 		// We don't need to write to the file, so just open for reading.
 		$handle = fopen( $file, 'r' );
 
@@ -73,7 +73,7 @@ class TPLC_Admin_Status {
 	 * @param string $file Path to the file
 	 * @param array $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
 	 */
-	public function get_file_version( $file ) {
+	static public function get_file_version( $file ) {
 		// We don't need to write to the file, so just open for reading.
 		$fp = fopen( $file, 'r' );
 
@@ -101,7 +101,7 @@ class TPLC_Admin_Status {
  	 * @param string $template_path
  	 * @return array
 	 */
-	public function scan_template_files( $template_path ) {
+	static public function scan_template_files( $template_path ) {
 		$files         = scandir( $template_path );
 		$result        = array();
 		if ( $files ) {
