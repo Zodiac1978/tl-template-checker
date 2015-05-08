@@ -58,8 +58,8 @@ function tplc_create_page( $slug, $option = '', $page_title = '', $page_content 
     if ( $page_found ) {
         if ( ! $option_value )
             update_option( $option, $page_found );
-		
-		return $page_found;
+
+        return $page_found;
     }
 
     $page_data = array(
