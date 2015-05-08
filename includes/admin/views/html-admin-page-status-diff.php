@@ -70,9 +70,12 @@ jQuery( function($) {
 						$file
 					);
 
+					$theme = wp_get_theme();
+					$template = wp_get_theme( $theme->template );
+
 					if ( $diff_table ) {
 						printf(
-							'<div class="diff-wrapper"><table class="diff diffheader"><tr><th>%s</th><th>&#160;</th><th>%s</th></tr></table>%s</div>',
+							'<div class="diff-wrapper"><table class="diff diffheader"><tr><th>%s:' . $template . '</th><th>&#160;</th><th>%s:' . $theme . '</th></tr></table>%s</div>',
 							__( 'Parent Theme', 'tl-template-checker'),
 							__( 'Child Theme', 'tl-template-checker'),
 							$diff_table
