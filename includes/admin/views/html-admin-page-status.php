@@ -17,10 +17,10 @@
 	<?php
 		switch ( $current_tab ) {
 			case "diff" :
-				$this->status_diff();
+                TPLC_Admin_Status::status_diff();
 			break;
 			default :
-				$this->status_report();
+                TPLC_Admin_Status::status_report();
 			break;
 		}
 	?>
