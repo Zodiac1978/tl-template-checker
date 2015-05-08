@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Template Checker\n"
-"POT-Creation-Date: 2015-05-06 11:00+0100\n"
-"PO-Revision-Date: 2015-05-06 11:00+0100\n"
+"POT-Creation-Date: 2015-05-08 18:35+0100\n"
+"PO-Revision-Date: 2015-05-08 18:37+0100\n"
 "Last-Translator: Torsten Landsiedel <torsten.landsiedel@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -62,15 +62,15 @@ msgstr "Template-Check"
 msgid "Diff for template file:"
 msgstr "Unterschiede in der PHP-Datei:"
 
-#: includes/admin/views/html-admin-page-status-diff.php:76
+#: includes/admin/views/html-admin-page-status-diff.php:79
 msgid "Parent Theme"
 msgstr "Eltern-Theme"
 
-#: includes/admin/views/html-admin-page-status-diff.php:77
+#: includes/admin/views/html-admin-page-status-diff.php:80
 msgid "Child Theme"
 msgstr "Child-Theme"
 
-#: includes/admin/views/html-admin-page-status-diff.php:83
+#: includes/admin/views/html-admin-page-status-diff.php:86
 msgid "No differences."
 msgstr "Keine Unterschiede."
 
@@ -134,20 +134,24 @@ msgstr "Unterschiede"
 
 #: includes/admin/views/html-notice-template-check.php:12
 msgid ""
-"<strong>Your theme has bundled outdated copies of WooCommerce template "
-"files</strong> &#8211; if you encounter functionality issues on the frontend "
-"this could the reason. Ensure you update or remove them (in general we "
-"recommend only bundling the template files you actually need to customize). "
-"See the system report for full details."
+"<strong>Your child theme has bundled outdated copies of parent theme files</"
+"strong> &#8211; please ensure you update them manually. See the child theme "
+"check for more details."
 msgstr ""
+"<strong>Dein Child-Theme enthält veraltete Versionen von Dateien aus dem "
+"Eltern-Theme</strong> &#8211; bitte aktualisieren die Dateien manuell. Nutze "
+"den Child-Theke-Check, um mehr Infos zu bekommen."
 
 #: includes/admin/views/html-notice-template-check.php:13
-msgid "System Status"
-msgstr "Systemstatus"
+msgid "Child Theme Check"
+msgstr "Child-Theme-Check"
 
 #: includes/admin/views/html-notice-template-check.php:13
 msgid "Hide this notice"
 msgstr "Diesen Hinweis ausblenden"
+
+#~ msgid "System Status"
+#~ msgstr "Systemstatus"
 
 #~ msgid "WooCommerce"
 #~ msgstr "WooCommerce"
