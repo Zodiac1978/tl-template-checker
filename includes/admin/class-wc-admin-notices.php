@@ -1,0 +1,149 @@
+<?php
+/**
+ * Display notices in admin.
+ *
+ * @author      WooThemes
+ * @category    Admin
+ * @package     WooCommerce/Admin
+ * @version     2.3.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * TPLC_Admin_Notices Class
+ */
+class TPLC_Admin_Notices {
+
+	/**
+	 * Array of notices - name => callback
+	 * @var array
+	 */
+	private $notices = array(
+		'template_files'      => 'template_file_check_notice'
+	);
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		//add_action( 'switch_theme', array( $this, 'reset_admin_notices' ) );
+		//add_action( 'woocommerce_installed', array( $this, 'reset_admin_notices' ) );
+		//add_action( 'wp_loaded', array( $this, 'hide_notices' ) );
+		//add_action( 'woocommerce_hide_install_notice', array( $this, 'hide_install_notice' ) );
+		//add_action( 'woocommerce_hide_translation_upgrade_notice', array( $this, 'hide_translation_upgrade_notice' ) );
+		//add_action( 'admin_print_styles', array( $this, 'add_notices' ) );
+		add_action( 'admin_print_styles', array( $this, 'reset_admin_notices' ) );
+		add_action( 'admin_print_styles', array( $this, 'add_notices' ) );
+	}
+
+	/**
+	 * Reset notices for themes when switched or a new version of WC is installed
+	 */
+	public function reset_admin_notices() {
+		self::add_notice( 'template_files' );
+	}
+
+	/**
+	 * Show a notice
+	 * @param  string $name
+	 */
+	public static function add_notice( $name ) {
+		$notices = array_unique( array_merge( get_option( 'tplc_admin_notices', array() ), array( $name ) ) );
+		update_option( 'tplc_admin_notices', $notices );
+	}
+
+	/**
+	 * Remove a notice from being displayed
+	 * @param  string $name
+	 */
+	public static function remove_notice( $name ) {
+		$notices = array_diff( get_option( 'tplc_admin_notices', array() ), array( $name ) );
+		update_option( 'tplc_admin_notices', $notices );
+	}
+
+	/**
+	 * See if a notice is being shown
+	 * @param  string  $name
+	 * @return boolean
+	 */
+	public static function has_notice( $name ) {
+		return in_array( $name, get_option( 'tplc_admin_notices', array() ) );
+	}
+
+	/**
+	 * Hide a notice if the GET variable is set.
+	 */
+	public function hide_notices() {
+		if ( isset( $_GET['wc-hide-notice'] ) ) {
+			$hide_notice = sanitize_text_field( $_GET['wc-hide-notice'] );
+			self::remove_notice( $hide_notice );
+			do_action( 'woocommerce_hide_' . $hide_notice . '_notice' );
+		}
+	}
+
+
+
+	/**
+	 * Add notices + styles if needed.
+	 */
+	public function add_notices() {
+		$notices = get_option( 'tplc_admin_notices', array() );
+
+		foreach ( $notices as $notice ) {
+			wp_enqueue_script( 'wc-admin-notices' );
+			add_action( 'admin_notices', array( $this, $this->notices[ $notice ] ) );
+		}
+	}
+
+
+	/**
+	 * Show a notice highlighting bad template files
+	 */
+	public function template_file_check_notice() {
+		
+		require_once( 'class-wc-admin-status.php' );
+
+
+		$template_path = get_template_directory() . '/';
+
+		$parent_theme_templates = TPLC_Admin_Status::scan_template_files( $template_path );
+		// TPLC_Admin_Status::scan_template_files( WC()->plugin_path() . '/templates' );
+		$outdated       = false;
+
+		foreach ( $parent_theme_templates as $file ) {
+			$theme_file = false;
+			
+			$child_path = get_stylesheet_directory() . '/' . $file;
+
+			// Exclude functions.php
+			if ( file_exists( $child_path ) && basename( $file ) !== 'functions.php' ) {
+				$theme_file = $child_path;
+			} else {
+				$theme_file = false;
+			}
+
+			if ( $theme_file ) {
+				$core_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
+				$theme_version = TPLC_Admin_Status::get_file_version( $theme_file );
+
+				if ( $core_version && $theme_version && version_compare( $theme_version, $core_version, '<' ) ) {
+					$outdated = true;
+					break;
+				}
+			}
+		}
+
+		if ( $outdated ) {
+			include( 'views/html-notice-template-check.php' );
+		} else {
+			self::remove_notice( 'template_files' );
+		}
+	}
+
+
+}
+
+new TPLC_Admin_Notices();
