@@ -29,7 +29,7 @@ add_action( 'after_setup_theme', 'tl_tlpc_add_template_check' );
 
 function tl_tlpc_styles_template_check() {
     if ( is_admin() && is_child_theme() ) {
-		wp_enqueue_style( 'woocommerce_admin_styles', plugins_url('/assets/css/admin.css', __FILE__), array() );
+		wp_enqueue_style( 'tplc_admin_styles', plugins_url('/assets/css/admin.css', __FILE__), array() );
 	}
 }
 add_action( 'admin_enqueue_scripts', 'tl_tlpc_styles_template_check' );
