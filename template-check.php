@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: Child-Theme-Template-Checker
+ * Plugin Name: Child Theme Check
  * Description: This plugins can warn you about old template files in your child theme
  * Version:     0.1.0
+ * Plugin URI:  https://github.com/Zodiac1978/tl-template-checker
  * Author:      Torsten Landsiedel
  * Author URI:  http://torstenlandsiedel.de
- * Plugin URI:  http://torstenlandsiedel.de
  * Text Domain: tl-template-checker
  * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
