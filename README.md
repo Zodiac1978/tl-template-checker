@@ -1,4 +1,4 @@
-# TL Template Checker
+# Child Theme Check
 =============
 A WordPress plugin that warns you about old template files in your child theme. Still in early development! Do not use on non-development sites.
 
