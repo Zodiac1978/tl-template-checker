@@ -55,7 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				} elseif ( ! $theme_version && $core_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
 						__( '%s <code>%s</code>: Child theme is missing version keyword. The parent theme version is <strong>%s</strong>.', 'tl-template-checker' ),
-						'<span class="dashicons dashicons-minus"></span>',
+						'<span class="dashicons dashicons-info" style="color:orange"></span>',
 						basename( $theme_file ),
 						$core_version
 					);
