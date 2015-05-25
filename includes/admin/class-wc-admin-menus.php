@@ -29,7 +29,7 @@ class TPLC_Admin_Menus {
 	 * Add menu item
 	 */
 	public function status_menu() {
-		add_submenu_page( 'tools.php',  __( 'Template Check', 'tl-template-checker' ), __( 'Template Check', 'tl-template-checker' ), 'manage_options', 'wc-status', array( $this, 'status_page' ) );
+		add_submenu_page( 'tools.php',  __( 'Child Theme Check', 'tl-template-checker' ), __( 'Child Theme Check', 'tl-template-checker' ), 'manage_options', 'wc-status', array( $this, 'status_page' ) );
 	}
 
 	/**

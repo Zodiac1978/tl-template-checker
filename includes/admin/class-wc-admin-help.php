@@ -38,7 +38,7 @@ class TPLC_Admin_Help {
 		    'title'	=> __( 'Documentation', 'tl-template-checker' ),
 		    'content'	=>
 
-		    	'<p>' . __( 'Thank you for using TL Template Check :)', 'tl-template-checker' ) . '</p>' .
+		    	'<p>' . __( 'Thank you for using Child Theme Check :)', 'tl-template-checker' ) . '</p>' .
 
 		    	'<p><a href="' . 'https://github.com/Zodiac1978/tl-template-checker/' . '" class="button button-primary">' . __( 'TL Template Check Github project', 'tl-template-checker' ) . '</a></p>'
 
@@ -49,7 +49,7 @@ class TPLC_Admin_Help {
 		    'title'	=> __( 'Found a bug?', 'tl-template-checker' ),
 		    'content'	=>
 
-		    	'<p>' . sprintf(__( 'If you find a bug within TL Template Check you can create a ticket via <a href="%s">Github issues</a>.', 'tl-template-checker' ), 'https://github.com/Zodiac1978/tl-template-checker/issues?state=open' ) . '</p>' .
+		    	'<p>' . sprintf(__( 'If you find a bug within Child Theme Check you can create a ticket via <a href="%s">Github issues</a>.', 'tl-template-checker' ), 'https://github.com/Zodiac1978/tl-template-checker/issues?state=open' ) . '</p>' .
 
 		    	//'<a href="' . 'http://wordpress.org/support/plugin/' . '" class="button">' . __( 'Community Support', 'tl-template-checker' ) . '</a> 
 

@@ -2,7 +2,7 @@
 	<h2 class="nav-tab-wrapper">
 		<?php
 			$tabs = array(
-				'status' => __( 'Template Check', 'tl-template-checker' ),
+				'status' => __( 'Child Theme Check', 'tl-template-checker' ),
 				'diff'  => __( 'Diff', 'tl-template-checker' ),
 			);
 			foreach ( $tabs as $name => $label ) {
