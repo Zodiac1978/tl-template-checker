@@ -29,8 +29,9 @@ class TPLC_Admin_Notices {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action( 'switch_theme', array( $this, 'reset_admin_notices' ) );
+		add_filter( 'removable_query_args', array( $this, 'removable_query_args' ) );
 		add_action( 'wp_loaded', array( $this, 'hide_notices' ) );
+		add_action( 'admin_print_styles', array( $this, 'check_theme_is_updated' ) );
 		add_action( 'admin_print_styles', array( $this, 'add_notices' ) );
 	}
 
@@ -137,6 +138,23 @@ class TPLC_Admin_Notices {
 		}
 	}
 
+	/**
+	 * Check if the core theme has been updated since last call and reset admin notices, in case of update.
+	 *
+	 * This works for manual theme updates, as well as for automatic updates.
+	 */
+	public function check_theme_is_updated() {
+		$core_theme = wp_get_theme( get_template() );
+		if ( ! $core_theme->exists() ) {
+			return;
+		}
+		$latest_core_version  = get_theme_mod( 'tl_latest_core_version' );
+		$current_core_version = $core_theme->get( 'Version' );
+		if ( version_compare( $latest_core_version, $current_core_version, '<' ) ) {
+			$this->reset_admin_notices();
+			set_theme_mod( 'tl_latest_core_version', $current_core_version );
+		}
+	}
 
 }
 
