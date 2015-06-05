@@ -8,7 +8,7 @@ Child Themes are used to avoid overwriting your customizations. But if you prese
 
 ## Requirements
 
-You have to use a child theme. If a child theme is active, you have an additional entry under **Tools** called **Template Check**.
+You have to use a child theme. If a child theme is active, you have an additional entry under **Tools** called **Child Theme Check**.
 
 For full usage of the plugin you have to define the version of the template file in the header of the PHP file with an additional @version info.
 
