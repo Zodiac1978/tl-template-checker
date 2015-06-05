@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <table class="tplc_status_table widefat" cellspacing="0" id="status">
 	<thead>
 	<tr>
-		<th colspan="2"><?php _e( 'Templates', 'tl-template-checker' ); ?></th>
+		<th><?php _e( 'Templates', 'tl-template-checker' ); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -88,8 +88,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$theme,
 					$template
 				); ?></td>
+			</tr>
+			<tr>
 				<td><?php echo implode( '<br>', $found_plugin_files ); ?></td>
 			</tr>
+			
 		<?php
 		}
 	} else {
