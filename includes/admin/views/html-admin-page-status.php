@@ -7,7 +7,7 @@
 			);
 			foreach ( $tabs as $name => $label ) {
 				printf( '<a href="%s" class="nav-tab %s">%s</a>',
-					esc_url( admin_url( 'admin.php?page=wc-status&amp;tab=' . $name ) ),
+					esc_url( admin_url( 'admin.php?page=tplc-status&amp;tab=' . $name ) ),
 					$current_tab == $name ? 'nav-tab-active' : '',
 					$label
 				);

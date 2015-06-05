@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function tplc_get_screen_ids() {
 
     $screen_ids   = array(
-        'tools_page_wc-status',
+        'tools_page_tplc-status',
     );
 
     return $screen_ids;
