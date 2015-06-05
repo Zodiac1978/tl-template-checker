@@ -31,6 +31,9 @@ jQuery( function($) {
 		foreach ( $template_paths as $plugin_name => $template_path ) {
 			$scanned_files[ $plugin_name ] = TPLC_Admin_Status::scan_template_files( $template_path );
 		}
+		
+		$message = __( 'There are no differences between child theme templates and parent theme templates.', 'tl-template-checker' );
+
 		foreach ( $scanned_files as $plugin_name => $files ) {
 			foreach ( $files as $file ) {
 
@@ -48,8 +51,8 @@ jQuery( function($) {
 				}
 
 				if ( $theme_file ) {
-					$core_version = TPLC_Admin_Status::get_file_content( get_template_directory() . '/' . $file );
 
+					$core_version = TPLC_Admin_Status::get_file_content( get_template_directory() . '/' . $file );
 					$theme_version = TPLC_Admin_Status::get_file_content( $theme_file );
 
 					/* Broken table if used: @link https://core.trac.wordpress.org/ticket/25473
@@ -64,34 +67,38 @@ jQuery( function($) {
 					$args = array( 'show_split_view' => true );
 
 					$diff_table = wp_text_diff( $core_version, $theme_version, $args );
-					printf(
-						'<h3 class="trigger">%s %s</h3>',
-						__('Diff for template file:', 'tl-template-checker'),
-						$file
-					);
 
 					$theme = wp_get_theme();
 					$template = wp_get_theme( $theme->template );
 
 					if ( $diff_table ) {
+						
+						$message = ''; // reset message if diff found
+
+						printf(
+							'<h3 class="trigger">%s %s</h3>',
+							__('Diff for template file:', 'tl-template-checker'),
+							$file
+						);
+						
 						printf(
 							'<div class="diff-wrapper"><table class="diff diffheader"><tr><th>%s:' . $template . '</th><th>&#160;</th><th>%s:' . $theme . '</th></tr></table>%s</div>',
 							__( 'Parent Theme', 'tl-template-checker'),
 							__( 'Child Theme', 'tl-template-checker'),
 							$diff_table
 						);
-					} else {
-						printf(
-							'<div class="diff-wrapper"><div class="diff nodiff">%s</div></div>',
-							__( 'No differences.', 'tl-template-checker')
-						);
-					}
 
-					echo '<hr class="tplc_diff_hr">';
+						echo '<hr class="tplc_diff_hr">';
+
+					} 
 
 				}
+
 			}
 		}
+
+		echo $message;
+
 		?>
 	</div>
 </div>
