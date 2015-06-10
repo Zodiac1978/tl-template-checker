@@ -41,25 +41,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 			}
 
 			if ( $theme_file ) {
-				$core_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
-				$theme_version = TPLC_Admin_Status::get_file_version( $theme_file );
+				$parent_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
+				$child_version  = TPLC_Admin_Status::get_file_version( $theme_file );
 
-				if ( $core_version && $theme_version && ( version_compare( $theme_version, $core_version, '<' ) ) ) {
+				if ( $parent_version && $child_version && ( version_compare( $child_version, $parent_version, '<' ) ) ) {
 					$found_files[ $plugin_name ][] = sprintf(
 						__( '%s <code>%s</code>: Child theme version <strong style="color:red">%s</strong> is out of date. The parent theme version is <strong>%s</strong>.', 'tl-template-checker' ),
 						'<span class="dashicons dashicons-no-alt" style="color:red"></span>',
 						basename( $theme_file ),
-						$theme_version ? $theme_version : '-',
-						$core_version
+						$child_version ? $child_version : '-',
+						$parent_version
 					);
-				} elseif ( ! $theme_version && $core_version ) {
+				} elseif ( ! $child_version && $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
 						__( '%s <code>%s</code>: Child theme is missing version keyword. The parent theme version is <strong>%s</strong>.', 'tl-template-checker' ),
 						'<span class="dashicons dashicons-info" style="color:orange"></span>',
 						basename( $theme_file ),
-						$core_version
+						$parent_version
 					);
-				} elseif ( ! $core_version ) {
+				} elseif ( ! $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
 						__( '%s <code>%s</code>: Parent theme is missing version keyword.', 'tl-template-checker' ),
 						'<span class="dashicons dashicons-minus"></span>',
@@ -70,8 +70,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 						__( '%s <code>%s</code>: Child theme version <strong style="color:green">%s</strong> matches parent theme.', 'tl-template-checker' ),
 						'<span class="dashicons dashicons-yes" style="color:green"></span>',
 						basename( $theme_file ),
-						$theme_version ? $theme_version : '-',
-						$core_version
+						$child_version ? $child_version : '-',
+						$parent_version
 					);
 				}
 			}

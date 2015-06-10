@@ -52,8 +52,11 @@ jQuery( function($) {
 
 				if ( $theme_file ) {
 
-					$core_version = TPLC_Admin_Status::get_file_content( get_template_directory() . '/' . $file );
-					$theme_version = TPLC_Admin_Status::get_file_content( $theme_file );
+					$parent_content = TPLC_Admin_Status::get_file_content( get_template_directory() . '/' . $file );
+					$child_content  = TPLC_Admin_Status::get_file_content( $theme_file );
+
+					$parent_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
+					$child_version  = TPLC_Admin_Status::get_file_version( $theme_file );
 
 					/* Broken table if used: @link https://core.trac.wordpress.org/ticket/25473
 
@@ -66,7 +69,7 @@ jQuery( function($) {
 					// This is important and is missing in codex :(
 					$args = array( 'show_split_view' => true );
 
-					$diff_table = wp_text_diff( $core_version, $theme_version, $args );
+					$diff_table = wp_text_diff( $parent_content, $child_content, $args );
 
 					$theme = wp_get_theme();
 					$template = wp_get_theme( $theme->template );
@@ -75,10 +78,21 @@ jQuery( function($) {
 						
 						$message = ''; // reset message if diff found
 
+						if ( $parent_version && $child_version && ( version_compare( $child_version, $parent_version, '<' ) ) ) {
+							$status = '<span class="alignright dashicons dashicons-no-alt" style="color:red"></span>';
+						} elseif ( ! $child_version && $parent_version ) {
+							$status = '<span class="alignright dashicons dashicons-info" style="color:orange"></span>';
+						} elseif ( ! $parent_version ) {
+							$status = '<span class="alignright dashicons dashicons-minus"></span>';
+						} else {
+							$status = '<span class="alignright dashicons dashicons-yes" style="color:green"></span>';
+						}
+
 						printf(
-							'<h3 class="trigger">%s %s</h3>',
+							'<h3 class="trigger">%s %s %s</h3>',
 							__('Diff for template file:', 'tl-template-checker'),
-							$file
+							$file,
+							$status
 						);
 						
 						printf(
