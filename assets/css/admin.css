@@ -8,6 +8,7 @@ h3.trigger {
 
 	margin: 0 !important;
 	padding: 10px;
+	cursor: pointer;
 }
 h3.trigger:before {
 	font-family: 'Dashicons';
