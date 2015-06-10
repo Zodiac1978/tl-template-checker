@@ -36,7 +36,7 @@ class TPLC_Admin_Menus {
 	 * Init the status page
 	 */
 	public function status_page() {
-		$page = include( 'class-wc-admin-status.php' );
+		$page = include( 'class-tplc-admin-status.php' );
 		$page->output();
 	}
 

@@ -96,7 +96,7 @@ class TPLC_Admin_Notices {
 		$notices = get_option( 'tplc_admin_notices', array() );
 
 		foreach ( $notices as $notice ) {
-			wp_enqueue_script( 'wc-admin-notices' );
+			wp_enqueue_script( 'tplc-admin-notices' );
 			add_action( 'admin_notices', array( $this, $this->notices[ $notice ] ) );
 		}
 	}
@@ -107,7 +107,7 @@ class TPLC_Admin_Notices {
 	 */
 	public function template_file_check_notice() {
 		
-		require_once( 'class-wc-admin-status.php' );
+		require_once( 'class-tplc-admin-status.php' );
 
 
 		$template_path = get_template_directory() . '/';
@@ -129,10 +129,10 @@ class TPLC_Admin_Notices {
 			}
 
 			if ( $theme_file ) {
-				$core_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
-				$theme_version = TPLC_Admin_Status::get_file_version( $theme_file );
+				$parent_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
+				$child_version  = TPLC_Admin_Status::get_file_version( $theme_file );
 
-				if ( $core_version && $theme_version && version_compare( $theme_version, $core_version, '<' ) ) {
+				if ( $parent_version && $child_version && version_compare( $child_version, $parent_version, '<' ) ) {
 					$outdated = true;
 					break;
 				}

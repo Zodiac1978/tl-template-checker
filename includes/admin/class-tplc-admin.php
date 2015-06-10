@@ -27,16 +27,16 @@ class TPLC_Admin {
 	public function includes() {
 		
 		// Functions
-		include_once( 'wc-admin-functions.php' );
+		include_once( 'tplc-admin-functions.php' );
 
 		// Menus
-		include_once( 'class-wc-admin-menus.php' );
+		include_once( 'class-tplc-admin-menus.php' );
 		
 		// Notices
-		include_once( 'class-wc-admin-notices.php' ); 
+		include_once( 'class-tplc-admin-notices.php' ); 
 
 		// Help
-		include_once( 'class-wc-admin-help.php' );
+		include_once( 'class-tplc-admin-help.php' );
 		
 	}
 

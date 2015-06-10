@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function tl_tlpc_add_template_check() {
     if ( is_admin() && is_child_theme() ) {
-		include_once( 'includes/admin/class-wc-admin.php' );
+		include_once( 'includes/admin/class-tplc-admin.php' );
 	}
 }
 add_action( 'after_setup_theme', 'tl_tlpc_add_template_check' );

@@ -40,7 +40,9 @@ class TPLC_Admin_Help {
 
 		    	'<p>' . __( 'Thank you for using Child Theme Check :)', 'tl-template-checker' ) . '</p>' .
 
-		    	'<p><a href="' . 'https://github.com/Zodiac1978/tl-template-checker/' . '" class="button button-primary">' . __( 'TL Template Check Github project', 'tl-template-checker' ) . '</a></p>'
+				'<p>' . __( 'Much more documention needs to be done here.', 'tl-template-checker' ) . '</p>' .		    	
+
+		    	'<p><a href="' . 'https://github.com/Zodiac1978/tl-template-checker/' . '" class="button button-primary">' . __( 'Child Theme Check Github project', 'tl-template-checker' ) . '</a></p>'
 
 		) );
 
