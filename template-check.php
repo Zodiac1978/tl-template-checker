@@ -46,3 +46,16 @@ function tl_tplc_load_plugin_textdomain() {
   	}
 }
 add_action( 'plugins_loaded', 'tl_tplc_load_plugin_textdomain' );
+
+/**
+ * add link on plugin page
+ *
+ * @param $links
+ * @return mixed
+ */
+function plugin_settings_link( $links ) {
+    $settings_link = '<a href="tools.php?page=tplc-status">' . __('Settings')  . '</a>';
+    array_unshift($links, $settings_link);
+    return $links;
+}
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ) , 'plugin_settings_link' );
