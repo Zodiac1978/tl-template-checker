@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Template Checker\n"
-"POT-Creation-Date: 2015-06-09 21:33+0100\n"
-"PO-Revision-Date: 2015-06-09 21:34+0100\n"
+"POT-Creation-Date: 2015-06-21 15:59+0100\n"
+"PO-Revision-Date: 2015-06-21 16:01+0100\n"
 "Last-Translator: Torsten Landsiedel <torsten.landsiedel@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.1\n"
 "X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -25,14 +25,18 @@ msgid "Thank you for using Child Theme Check :)"
 msgstr "Danke, dass Du Child-Theme-Check verwendest :)"
 
 #: includes/admin/class-tplc-admin-help.php:43
+msgid "Much more documention needs to be done here."
+msgstr "An dieser Stelle muss noch viele mehr dokumentiert werden! :)"
+
+#: includes/admin/class-tplc-admin-help.php:45
 msgid "Child Theme Check Github project"
 msgstr "Github-Projekt: Child-Theme-Check"
 
-#: includes/admin/class-tplc-admin-help.php:49
+#: includes/admin/class-tplc-admin-help.php:51
 msgid "Found a bug?"
 msgstr "Einen Fehler gefunden?"
 
-#: includes/admin/class-tplc-admin-help.php:52
+#: includes/admin/class-tplc-admin-help.php:54
 #, php-format
 msgid ""
 "If you find a bug within Child Theme Check you can create a ticket via <a "
@@ -41,21 +45,22 @@ msgstr ""
 "Wenn Du einen Fehler in Child-Theme-Check findest, melde ihn bitte per "
 "Ticket auf <a href=\"%s\">Github</a>. Danke!"
 
-#: includes/admin/class-tplc-admin-help.php:56
+#: includes/admin/class-tplc-admin-help.php:58
 msgid "Report a bug"
 msgstr "Fehler melden"
 
-#: includes/admin/class-tplc-admin-help.php:62
+#: includes/admin/class-tplc-admin-help.php:64
 msgid "For more information:"
 msgstr "Für mehr Information:"
 
-#: includes/admin/class-tplc-admin-help.php:64
+#: includes/admin/class-tplc-admin-help.php:66
 msgid "Project on Github"
 msgstr "Projekt bei GitHub.com"
 
 #: includes/admin/class-tplc-admin-menus.php:32
-#: includes/admin/views/html-admin-page-status.php:5
+#: includes/admin/views/html-admin-page-status.php:2
 #: includes/admin/views/html-notice-template-check.php:13
+#: template-check.php:57
 msgid "Child Theme Check"
 msgstr "Child-Theme-Check"
 
@@ -67,15 +72,15 @@ msgstr ""
 "Es gibt keine Unterschiede zwischen Child-Theme-Vorlagen und Eltern-Theme-"
 "Vorlagen."
 
-#: includes/admin/views/html-admin-page-status-diff.php:80
+#: includes/admin/views/html-admin-page-status-diff.php:93
 msgid "Diff for template file:"
 msgstr "Unterschiede in der PHP-Datei:"
 
-#: includes/admin/views/html-admin-page-status-diff.php:86
+#: includes/admin/views/html-admin-page-status-diff.php:100
 msgid "Parent Theme"
 msgstr "Eltern-Theme"
 
-#: includes/admin/views/html-admin-page-status-diff.php:87
+#: includes/admin/views/html-admin-page-status-diff.php:101
 msgid "Child Theme"
 msgstr "Child-Theme"
 
@@ -126,14 +131,26 @@ msgstr ""
 "<abbr title=\"Eltern-Theme\">%s</abbr>:"
 
 #: includes/admin/views/html-admin-page-status-report.php:101
-msgid "Child Theme Overrides"
-msgstr "Überschriebene Child-Theme-Dateien"
-
-#: includes/admin/views/html-admin-page-status-report.php:102
 msgid "No overrides present in child theme."
 msgstr "Im Child-Theme werden keine PHP-Dateien überschrieben."
 
-#: includes/admin/views/html-admin-page-status.php:6
+#: includes/admin/views/html-admin-page-status.php:7
+msgid ""
+"There is no active child theme. You have to activate a child theme under "
+"Themes to use this plugin."
+msgstr ""
+"Es kein Child-Theme aktiviert. Du musst ein Child-Theme aktivieren, um "
+"dieses Plugin nutzen zu können."
+
+#: includes/admin/views/html-admin-page-status.php:8
+msgid "Themes"
+msgstr "Themes"
+
+#: includes/admin/views/html-admin-page-status.php:17
+msgid "Status"
+msgstr "Status"
+
+#: includes/admin/views/html-admin-page-status.php:18
 msgid "Diff"
 msgstr "Unterschiede"
 
@@ -152,14 +169,14 @@ msgstr ""
 msgid "Hide this notice"
 msgstr "Diesen Hinweis ausblenden"
 
+#~ msgid "Child Theme Overrides"
+#~ msgstr "Überschriebene Child-Theme-Dateien"
+
 #~ msgid "Template Check"
 #~ msgstr "Template-Check"
 
 #~ msgid "No differences."
 #~ msgstr "Keine Unterschiede."
-
-#~ msgid "System Status"
-#~ msgstr "Systemstatus"
 
 #~ msgid "WooCommerce"
 #~ msgstr "WooCommerce"
