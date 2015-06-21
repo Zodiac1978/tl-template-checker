@@ -20,7 +20,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function tl_tlpc_add_template_check() {
-    if ( is_admin() && is_child_theme() ) {
+    if ( is_admin() ) {
 		include_once( 'includes/admin/class-tplc-admin.php' );
 	}
 }
@@ -28,7 +28,7 @@ add_action( 'after_setup_theme', 'tl_tlpc_add_template_check' );
 
 
 function tl_tlpc_styles_template_check() {
-    if ( is_admin() && is_child_theme() ) {
+    if ( is_admin() ) {
 		wp_enqueue_style( 'tplc_admin_styles', plugins_url('/assets/css/admin.css', __FILE__), array() );
 	}
 }
@@ -54,10 +54,9 @@ add_action( 'plugins_loaded', 'tl_tplc_load_plugin_textdomain' );
  * @return mixed
  */
 function plugin_settings_link( $links ) {
-    if ( is_child_theme() ) {
-        $settings_link = '<a href="tools.php?page=tplc-status">' . __('Child-Theme Check', 'tl-template-checker') . '</a>';
-        array_unshift($links, $settings_link);
-    }
+    $settings_link = '<a href="tools.php?page=tplc-status">' . __('Child Theme Check', 'tl-template-checker') . '</a>';
+    array_unshift($links, $settings_link);
+
     return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ) , 'plugin_settings_link' );

@@ -98,7 +98,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	} else {
 	?>
 		<tr>
-			<td><?php _e( 'Child Theme Overrides', 'tl-template-checker' ); ?>:</td>
 			<td><?php _e( 'No overrides present in child theme.', 'tl-template-checker' ); ?></td>
 		</tr>
 	<?php
