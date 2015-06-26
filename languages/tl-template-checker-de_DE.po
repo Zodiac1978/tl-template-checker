@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Template Checker\n"
-"POT-Creation-Date: 2015-06-21 15:59+0100\n"
-"PO-Revision-Date: 2015-06-21 16:01+0100\n"
-"Last-Translator: Torsten Landsiedel <torsten.landsiedel@gmx.de>\n"
+"POT-Creation-Date: 2015-06-26 13:05+0100\n"
+"PO-Revision-Date: 2015-06-26 13:06+0100\n"
+"Last-Translator: Ralf Koller <r.koller@gmail.com>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -12,9 +12,11 @@ msgstr ""
 "X-Generator: Poedit 1.8.1\n"
 "X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-WPHeader: template-check.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: assets\n"
 
 #: includes/admin/class-tplc-admin-help.php:38
 msgid "Documentation"
@@ -57,6 +59,7 @@ msgstr "Für mehr Information:"
 msgid "Project on Github"
 msgstr "Projekt bei GitHub.com"
 
+#. Plugin Name of the plugin/theme
 #: includes/admin/class-tplc-admin-menus.php:32
 #: includes/admin/views/html-admin-page-status.php:2
 #: includes/admin/views/html-notice-template-check.php:13
@@ -168,6 +171,24 @@ msgstr ""
 #: includes/admin/views/html-notice-template-check.php:13
 msgid "Hide this notice"
 msgstr "Diesen Hinweis ausblenden"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/Zodiac1978/tl-template-checker"
+msgstr "https://github.com/Zodiac1978/tl-template-checker"
+
+#. Description of the plugin/theme
+msgid "This plugin can warn you about old template files in your child theme"
+msgstr ""
+"Dieses Plugin warnt Dich falls Template-Dateien in Deinem Child-Theme "
+"veraltet sind"
+
+#. Author of the plugin/theme
+msgid "Torsten Landsiedel"
+msgstr "Torsten Landsiedel"
+
+#. Author URI of the plugin/theme
+msgid "http://torstenlandsiedel.de"
+msgstr "http://torstenlandsiedel.de"
 
 #~ msgid "Child Theme Overrides"
 #~ msgstr "Überschriebene Child-Theme-Dateien"
