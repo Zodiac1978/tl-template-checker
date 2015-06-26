@@ -7,6 +7,7 @@
  * Author:      Torsten Landsiedel
  * Author URI:  http://torstenlandsiedel.de
  * Text Domain: tl-template-checker
+ * Domain Path: /languages
  * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
