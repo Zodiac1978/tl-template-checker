@@ -35,10 +35,12 @@ h3.trigger.active:before {
 h3.toggle-white {
 	background-color: #fff;
 }
-table.diffheader {
-	background-color: #f5f5f5;
+table .diffheader {
+	background-color: #666;
+	color: #fff;
+	font-weight: normal;
 }
-3.toggle-gray {
+h3.toggle-gray {
 	background-color: #f5f5f5;
 }
 .toggle_container {
@@ -68,6 +70,9 @@ abbr[title] {
 }
 .tplc_status_table td, .tplc_status_table td ol, .tplc_status_table td p, .tplc_status_table td ul {
     line-height: 1.8;
+}
+table.diff tr:nth-child(2n) .diff-context {
+    background-color: #f5f5f5;
 }
 table.diff tbody tr th:nth-child(2) {
     width: 4%;

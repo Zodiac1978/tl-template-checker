@@ -96,7 +96,7 @@ jQuery( function($) {
 						);
 						
 						printf(
-							'<div class="diff-wrapper"><table class="diff diffheader"><tr><th>%s:' . $template . '</th><th>&#160;</th><th>%s:' . $theme . '</th></tr></table>%s</div>',
+							'<div class="diff-wrapper"><table class="diff"><tr><th class="diffheader">%s:' . $template . '</th><th>&#160;</th><th class="diffheader">%s:' . $theme . '</th></tr></table>%s</div>',
 							__( 'Parent Theme', 'tl-template-checker'),
 							__( 'Child Theme', 'tl-template-checker'),
 							$diff_table
