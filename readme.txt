@@ -1,8 +1,8 @@
 === Child Theme Check ===
 Contributors: zodiac1978, drivingralle, fstaude, glueckpress, hinnerkaltenburg
-Donate link: http://example.com/
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LCH9UVV7RKDFY
 Tags: child, theme, check, child theme, child theme check
-Requires at least: ?.?.?
+Requires at least: 3.4.0
 Tested up to: 4.2.2
 Stable tag: 0.1.0
 License: GPLv2 or later
