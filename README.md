@@ -24,6 +24,11 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 
 ## Changelog
 
+### 1.0.0
+
+* Initial public release.
+
+
 ### 0.1.0
 
 * Initial release. (Proof-of-concept / Beta - DO NOT USE ON PRODUCTION SITES!)
