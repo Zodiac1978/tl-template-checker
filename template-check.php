@@ -73,6 +73,7 @@ final class TLTemplateChecker {
 	private function hooks() {
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ) , array( $this, 'plugin_settings_link' ) );
 	}
 
 	/**
@@ -98,7 +99,6 @@ final class TLTemplateChecker {
 		}
 	}
 
-
 	/**
 	 * Load plugin textdomain.
 	 *
@@ -108,6 +108,19 @@ final class TLTemplateChecker {
 		if ( is_admin() ) {
 	  		load_plugin_textdomain( 'tl-template-checker', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
 	  	}
+	}
+
+	/**
+	 * add link on plugin page
+	 *
+	 * @param $links
+	 * @return mixed
+	 */
+	function plugin_settings_link( $links ) {
+	    $settings_link = '<a href="tools.php?page=tplc-status">' . __('Child Theme Check', 'tl-template-checker') . '</a>';
+	    array_unshift($links, $settings_link);
+
+	    return $links;
 	}
 
 }
