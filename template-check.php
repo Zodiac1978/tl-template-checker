@@ -13,51 +13,129 @@
  */
 
 
-/**
-* Debug/Status page
-*
-* @since 0.1.0
-*/
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-function tl_tlpc_add_template_check() {
-    if ( is_admin() ) {
-		include_once( 'includes/admin/class-tplc-admin.php' );
-	}
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
-add_action( 'after_setup_theme', 'tl_tlpc_add_template_check' );
 
+if ( ! class_exists( 'TLTemplateChecker' ) ) :
 
-function tl_tlpc_styles_template_check() {
-    if ( is_admin() ) {
-		wp_enqueue_style( 'tplc_admin_styles', plugins_url('/assets/css/admin.css', __FILE__), array() );
-	}
-}
-add_action( 'admin_enqueue_scripts', 'tl_tlpc_styles_template_check' );
 
 
 /**
- * Load plugin textdomain.
+ * Main TL-Template-Checker Class
  *
- * @since 0.1.0
+ * @class WooCommerce
+ * @version	2.3.0
  */
-function tl_tplc_load_plugin_textdomain() {
-	if ( is_admin() ) {
-  		load_plugin_textdomain( 'tl-template-checker', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
-  	}
+final class TLTemplateChecker {
+
+	/**
+	 * @var string
+	 */
+	public $version = '0.1.0';
+
+	/**
+	 * @var WooCommerce The single instance of the class
+	 * @since 2.1
+	 */
+	protected static $_instance = null;
+
+	/**
+	 * Main WooCommerce Instance
+	 *
+	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
+	 *
+	 * @since 2.1
+	 * @static
+	 * @see WC()
+	 * @return WooCommerce - Main instance
+	 */
+	public static function instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+	}
+
+	/**
+	 * WooCommerce Constructor.
+	 */
+	public function __construct() {
+		$this->includes();
+		$this->hooks();
+	}
+
+	/**
+	 * Hook into actions and filters
+	 * @since  2.3
+	 */
+	private function hooks() {
+		add_action( 'init', array( $this, 'init' ), 0 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ) , array( $this, 'plugin_settings_link' ) );
+	}
+
+	/**
+	 * Init WooCommerce when WordPress Initialises.
+	 */
+	public function init() {
+		// Set up localisation
+		$this->load_plugin_textdomain();
+	}
+
+	/**
+	 * Include required core files used in admin.
+	 */
+	public function includes() {
+		if ( is_admin() ) {
+			include_once( 'includes/admin/class-tplc-admin.php' );
+		}
+	}
+
+	public function admin_styles() {
+	    if ( is_admin() ) {
+			wp_enqueue_style( 'tplc_admin_styles', plugins_url('/assets/css/admin.css', __FILE__), array() );
+		}
+	}
+
+	/**
+	 * Load plugin textdomain.
+	 *
+	 * @since 0.1.0
+	 */
+	private function load_plugin_textdomain() {
+		if ( is_admin() ) {
+	  		load_plugin_textdomain( 'tl-template-checker', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+	  	}
+	}
+
+	/**
+	 * add link on plugin page
+	 *
+	 * @param $links
+	 * @return mixed
+	 */
+	function plugin_settings_link( $links ) {
+	    $settings_link = '<a href="tools.php?page=tplc-status">' . __('Child Theme Check', 'tl-template-checker') . '</a>';
+	    array_unshift($links, $settings_link);
+
+	    return $links;
+	}
+
 }
-add_action( 'plugins_loaded', 'tl_tplc_load_plugin_textdomain' );
+
+endif;
 
 /**
- * add link on plugin page
+ * Returns the main instance of WC to prevent the need to use globals.
  *
- * @param $links
- * @return mixed
+ * @since  2.1
+ * @return WooCommerce
  */
-function plugin_settings_link( $links ) {
-    $settings_link = '<a href="tools.php?page=tplc-status">' . __('Child Theme Check', 'tl-template-checker') . '</a>';
-    array_unshift($links, $settings_link);
-
-    return $links;
+function TLTPLC() {
+	return TLTemplateChecker::instance();
 }
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ) , 'plugin_settings_link' );
+
+// Global for backwards compatibility.
+$GLOBALS['tl-template-checker'] = TLTPLC();
