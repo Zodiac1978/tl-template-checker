@@ -3,8 +3,8 @@ Contributors: zodiac1978, drivingralle, fstaude, glueckpress, hinnerkaltenburg
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LCH9UVV7RKDFY
 Tags: child, theme, check, child theme, child theme check
 Requires at least: 3.4.0
-Tested up to: 4.2.2
-Stable tag: 0.1.0
+Tested up to: 4.3
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,5 +38,5 @@ If this is the case you will see a warning if the version of the parent theme fi
 
 == Changelog ==
 
-= 0.1.0 =
+= 1.0.0 =
 * Initial release

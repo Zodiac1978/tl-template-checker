@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Child Theme Check
  * Description: This plugin can warn you about old template files in your child theme
- * Version:     0.1.0
+ * Version:     1.0.0
  * Plugin URI:  https://github.com/Zodiac1978/tl-template-checker
  * Author:      Torsten Landsiedel
  * Author URI:  http://torstenlandsiedel.de
@@ -25,19 +25,19 @@ if ( ! class_exists( 'TLTemplateChecker' ) ) :
 /**
  * Main TL-Template-Checker Class
  *
- * @class WooCommerce
- * @version	2.3.0
+ * @class TLTemplateChecker
+ * @version	1.0.0
  */
 final class TLTemplateChecker {
 
 	/**
 	 * @var string
 	 */
-	public $version = '0.1.0';
+	public $version = '1.0.0';
 
 	/**
-	 * @var WooCommerce The single instance of the class
-	 * @since 2.1
+	 * @var TLTemplateChecker The single instance of the class
+	 * @since 1.0.0
 	 */
 	protected static $_instance = null;
 
@@ -46,10 +46,10 @@ final class TLTemplateChecker {
 	 *
 	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
 	 *
-	 * @since 2.1
+	 * @since 1.0.0
 	 * @static
 	 * @see WC()
-	 * @return WooCommerce - Main instance
+	 * @return TLTemplateChecker - Main instance
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -59,7 +59,7 @@ final class TLTemplateChecker {
 	}
 
 	/**
-	 * WooCommerce Constructor.
+	 * TLTemplateChecker Constructor.
 	 */
 	public function __construct() {
 		$this->includes();
@@ -68,7 +68,8 @@ final class TLTemplateChecker {
 
 	/**
 	 * Hook into actions and filters
-	 * @since  2.3
+	 *
+	 * @since  1.0.0
 	 */
 	private function hooks() {
 		add_action( 'init', array( $this, 'init' ), 0 );
@@ -77,7 +78,9 @@ final class TLTemplateChecker {
 	}
 
 	/**
-	 * Init WooCommerce when WordPress Initialises.
+	 * Init TLTemplateChecker when WordPress Initialises.
+	 *
+	 * @since  1.0.0
 	 */
 	public function init() {
 		// Set up localisation
@@ -85,7 +88,9 @@ final class TLTemplateChecker {
 	}
 
 	/**
-	 * Include required core files used in admin.
+	 * Include required files used in admin.
+	 *
+	 * @since  1.0.0
 	 */
 	public function includes() {
 		if ( is_admin() ) {
@@ -93,6 +98,11 @@ final class TLTemplateChecker {
 		}
 	}
 
+	/**
+	 * Load styles in admin.
+	 *
+	 * @since  1.0.0
+	 */
 	public function admin_styles() {
 	    if ( is_admin() ) {
 			wp_enqueue_style( 'tplc_admin_styles', plugins_url('/assets/css/admin.css', __FILE__), array() );
@@ -102,7 +112,7 @@ final class TLTemplateChecker {
 	/**
 	 * Load plugin textdomain.
 	 *
-	 * @since 0.1.0
+	 * @since 1.0.0
 	 */
 	private function load_plugin_textdomain() {
 		if ( is_admin() ) {
@@ -115,6 +125,7 @@ final class TLTemplateChecker {
 	 *
 	 * @param $links
 	 * @return mixed
+	 * @since 1.0.0
 	 */
 	function plugin_settings_link( $links ) {
 	    $settings_link = '<a href="tools.php?page=tplc-status">' . __('Child Theme Check', 'tl-template-checker') . '</a>';
