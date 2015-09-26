@@ -51,7 +51,7 @@ class TPLC_Admin_Help {
 
 		    	'<p>' . sprintf(__( 'If you find a bug within Child Theme Check you can create a ticket via <a href="%s">Github issues</a>.', 'child-theme-check' ), 'https://github.com/Zodiac1978/tl-template-checker/issues?state=open' ) . '</p>' .
 
-		    	//'<a href="' . 'http://wordpress.org/support/plugin/' . '" class="button">' . __( 'Community Support', 'child-theme-check' ) . '</a> 
+		    	'<a href="' . 'https://wordpress.org/support/plugin/child-theme-check/' . '" class="button">' . __( 'Community Support', 'child-theme-check' ) . '</a>' .
 
 		    	'<p><a href="https://github.com/Zodiac1978/tl-template-checker/issues?state=open" class="button button-primary">' . __( 'Report a bug', 'child-theme-check' ) . '</a></p>'
 
@@ -60,7 +60,7 @@ class TPLC_Admin_Help {
 
 		$screen->set_help_sidebar(
 			'<p><strong>' . __( 'For more information:', 'child-theme-check' ) . '</strong></p>' .
-			//'<p><a href="http://wordpress.org" target="_blank">' . __( 'Project on WordPress.org', 'child-theme-check' ) . '</a></p>' .
+			'<p><a href="https://wordpress.org/plugins/child-theme-check/" target="_blank">' . __( 'Project on WordPress.org', 'child-theme-check' ) . '</a></p>' .
 			'<p><a href="https://github.com/Zodiac1978/tl-template-checker/" target="_blank">' . __( 'Project on Github', 'child-theme-check' ) . '</a></p>'
 		);
 	}
