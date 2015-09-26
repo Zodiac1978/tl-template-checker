@@ -4,14 +4,14 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/Zodiac1978/tl-template-checker/"
 "issues\n"
 "POT-Creation-Date: 2015-07-25 03:20+0200\n"
-"PO-Revision-Date: 2015-07-25 03:20+0200\n"
-"Last-Translator: Ralf Koller <r.koller@gmail.com>\n"
+"PO-Revision-Date: 2015-09-26 15:39+0200\n"
+"Last-Translator: Torsten Landsiedel <torsten.landsiedel@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-WPHeader: template-check.php\n"
@@ -61,13 +61,12 @@ msgstr "Für mehr Information:"
 
 #: includes/admin/class-tplc-admin-help.php:66
 msgid "Project on Github"
-msgstr "Projekt bei GitHub.com"
+msgstr "Projekt auf GitHub.com"
 
 #. Plugin Name of the plugin/theme
 #: includes/admin/class-tplc-admin-menus.php:32
 #: includes/admin/views/html-admin-page-status.php:2
-#: includes/admin/views/html-notice-template-check.php:13
-#: template-check.php:58
+#: includes/admin/views/html-notice-template-check.php:13 template-check.php:58
 msgid "Child Theme Check"
 msgstr "Child-Theme-Check"
 
