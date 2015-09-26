@@ -3,9 +3,7 @@
  * Debug/Status page
  *
  * @author 		WooThemes
- * @category 	Admin
- * @package 	WooCommerce/Admin/System Status
- * @version     2.1.0
+ * @version     1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

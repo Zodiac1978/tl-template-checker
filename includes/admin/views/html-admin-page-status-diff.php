@@ -32,7 +32,7 @@ jQuery( function($) {
 			$scanned_files[ $plugin_name ] = TPLC_Admin_Status::scan_template_files( $template_path );
 		}
 		
-		$message = __( 'There are no differences between child theme templates and parent theme templates.', 'tl-template-checker' );
+		$message = __( 'There are no differences between child theme templates and parent theme templates.', 'child-theme-check' );
 
 		foreach ( $scanned_files as $plugin_name => $files ) {
 			foreach ( $files as $file ) {
@@ -90,15 +90,15 @@ jQuery( function($) {
 
 						printf(
 							'<h3 class="trigger">%s %s %s</h3>',
-							__('Diff for template file:', 'tl-template-checker'),
+							__('Diff for template file:', 'child-theme-check'),
 							$file,
 							$status
 						);
 						
 						printf(
 							'<div class="diff-wrapper"><table class="diff"><tr><th class="diffheader">%s:' . $template . '</th><th>&#160;</th><th class="diffheader">%s:' . $theme . '</th></tr></table>%s</div>',
-							__( 'Parent Theme', 'tl-template-checker'),
-							__( 'Child Theme', 'tl-template-checker'),
+							__( 'Parent Theme', 'child-theme-check'),
+							__( 'Child Theme', 'child-theme-check'),
 							$diff_table
 						);
 
