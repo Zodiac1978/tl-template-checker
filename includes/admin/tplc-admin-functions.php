@@ -3,9 +3,7 @@
  * WooCommerce Admin Functions
  *
  * @author      WooThemes
- * @category    Core
- * @package     WooCommerce/Admin/Functions
- * @version     2.1.0
+ * @version     1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

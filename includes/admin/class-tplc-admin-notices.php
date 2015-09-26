@@ -3,9 +3,7 @@
  * Display notices in admin.
  *
  * @author      WooThemes
- * @category    Admin
- * @package     WooCommerce/Admin
- * @version     2.3.0
+ * @version     1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

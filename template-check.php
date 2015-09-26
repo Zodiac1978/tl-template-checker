@@ -116,7 +116,7 @@ final class TLTemplateChecker {
 	 */
 	private function load_plugin_textdomain() {
 		if ( is_admin() ) {
-	  		load_plugin_textdomain( 'tl-template-checker', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+	  		load_plugin_textdomain( 'child-theme-check', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
 	  	}
 	}
 

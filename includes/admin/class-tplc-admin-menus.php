@@ -3,9 +3,7 @@
  * Setup menus in WP admin.
  *
  * @author 		WooThemes
- * @category 	Admin
- * @package 	WooCommerce/Admin
- * @version     2.1.0
+ * @version     1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,7 +27,7 @@ class TPLC_Admin_Menus {
 	 * Add menu item
 	 */
 	public function status_menu() {
-		add_submenu_page( 'tools.php',  __( 'Child Theme Check', 'tl-template-checker' ), __( 'Child Theme Check', 'tl-template-checker' ), 'manage_options', 'tplc-status', array( $this, 'status_page' ) );
+		add_submenu_page( 'tools.php',  __( 'Child Theme Check', 'child-theme-check' ), __( 'Child Theme Check', 'child-theme-check' ), 'manage_options', 'tplc-status', array( $this, 'status_page' ) );
 	}
 
 	/**

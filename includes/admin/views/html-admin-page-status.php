@@ -1,11 +1,11 @@
 <div class="wrap">
-	<h2><?php _e( 'Child Theme Check', 'tl-template-checker' ); ?></h2>
+	<h1><?php _e( 'Child Theme Check', 'child-theme-check' ); ?></h1>
 
 <?php if ( ! is_child_theme() ) { ?>
 
 	<div id="message" class="updated">
-		<p><?php _e( 'There is no active child theme. You have to activate a child theme under Themes to use this plugin.', 'tl-template-checker' ); ?></p>
-		<p class="submit"><a class="button-primary" href="<?php echo esc_url( admin_url( 'themes.php' ) ); ?>"><?php _e( 'Themes', 'tl-template-checker' ); ?></a></p>
+		<p><?php _e( 'There is no active child theme. You have to activate a child theme under Themes to use this plugin.', 'child-theme-check' ); ?></p>
+		<p class="submit"><a class="button-primary" href="<?php echo esc_url( admin_url( 'themes.php' ) ); ?>"><?php _e( 'Themes', 'child-theme-check' ); ?></a></p>
 	</div>
 </div>
 
@@ -14,8 +14,8 @@
 		<h2 class="nav-tab-wrapper">
 			<?php
 				$tabs = array(
-					'status' => __( 'Status', 'tl-template-checker' ),
-					'diff'  => __( 'Diff', 'tl-template-checker' ),
+					'status' => __( 'Status', 'child-theme-check' ),
+					'diff'  => __( 'Diff', 'child-theme-check' ),
 				);
 				foreach ( $tabs as $name => $label ) {
 					printf( '<a href="%s" class="nav-tab %s">%s</a>',

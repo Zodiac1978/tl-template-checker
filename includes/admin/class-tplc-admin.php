@@ -8,9 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @class 		TPLC_Admin 
  * @author 		WooThemes
- * @category 	Admin
- * @package 	WooCommerce/Admin
- * @version     2.1.0 
+ * @version     1.0.0 
  */
 class TPLC_Admin {
 

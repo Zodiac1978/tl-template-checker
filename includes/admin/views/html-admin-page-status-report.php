@@ -8,10 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<table class="tplc_status_table widefat" cellspacing="0" id="status">
+<table class="tplc_status_table widefat" id="status">
 	<thead>
 	<tr>
-		<th><?php _e( 'Templates', 'tl-template-checker' ); ?></th>
+		<th><?php _e( 'Templates', 'child-theme-check' ); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				if ( $parent_version && $child_version && ( version_compare( $child_version, $parent_version, '<' ) ) ) {
 					$found_files[ $plugin_name ][] = sprintf(
-						__( '%s <code>%s</code>: Child theme version <strong style="color:red">%s</strong> is out of date. The parent theme version is <strong>%s</strong>.', 'tl-template-checker' ),
+						__( '%s <code>%s</code>: Child theme version <strong style="color:red">%s</strong> is out of date. The parent theme version is <strong>%s</strong>.', 'child-theme-check' ),
 						'<span class="dashicons dashicons-no-alt" style="color:red"></span>',
 						basename( $theme_file ),
 						$child_version ? $child_version : '-',
@@ -54,20 +54,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 					);
 				} elseif ( ! $child_version && $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
-						__( '%s <code>%s</code>: Child theme is missing version keyword. The parent theme version is <strong>%s</strong>.', 'tl-template-checker' ),
+						__( '%s <code>%s</code>: Child theme is missing version keyword. The parent theme version is <strong>%s</strong>.', 'child-theme-check' ),
 						'<span class="dashicons dashicons-info" style="color:orange"></span>',
 						basename( $theme_file ),
 						$parent_version
 					);
 				} elseif ( ! $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
-						__( '%s <code>%s</code>: Parent theme is missing version keyword.', 'tl-template-checker' ),
+						__( '%s <code>%s</code>: Parent theme is missing version keyword.', 'child-theme-check' ),
 						'<span class="dashicons dashicons-minus"></span>',
 						basename( $theme_file )
 					);
 				} else {
 					$found_files[ $plugin_name ][] = sprintf(
-						__( '%s <code>%s</code>: Child theme version <strong style="color:green">%s</strong> matches parent theme.', 'tl-template-checker' ),
+						__( '%s <code>%s</code>: Child theme version <strong style="color:green">%s</strong> matches parent theme.', 'child-theme-check' ),
 						'<span class="dashicons dashicons-yes" style="color:green"></span>',
 						basename( $theme_file ),
 						$child_version ? $child_version : '-',
@@ -84,7 +84,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 			<tr>
 				<td><?php printf(
-					__( 'Template overrides by <abbr title="Child theme">%s</abbr> for <abbr title="Parent theme">%s</abbr>:', 'tl-template-checker' ),
+					__( 'Template overrides by <abbr title="Child theme">%s</abbr> for <abbr title="Parent theme">%s</abbr>:', 'child-theme-check' ),
 					$theme,
 					$template
 				); ?></td>
@@ -98,7 +98,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	} else {
 	?>
 		<tr>
-			<td><?php _e( 'No overrides present in child theme.', 'tl-template-checker' ); ?></td>
+			<td><?php _e( 'No overrides present in child theme.', 'child-theme-check' ); ?></td>
 		</tr>
 	<?php
 	}
