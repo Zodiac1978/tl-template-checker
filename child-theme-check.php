@@ -6,7 +6,7 @@
  * Plugin URI:  https://github.com/Zodiac1978/tl-template-checker
  * Author:      Torsten Landsiedel
  * Author URI:  http://torstenlandsiedel.de
- * Text Domain: tl-template-checker
+ * Text Domain: child-theme-check
  * Domain Path: /languages
  * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
