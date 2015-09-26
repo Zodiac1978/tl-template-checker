@@ -1,15 +1,15 @@
 <?php
 /**
- * WooCommerce Admin Functions
+ * TLTemplateChecker Admin Functions
  *
- * @author      WooThemes
+ * @author      WooThemes/TLTemplateChecker
  * @version     1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Get all WooCommerce screen ids
+ * Get all TLTemplateChecker screen ids
  *
  * @return array
  */

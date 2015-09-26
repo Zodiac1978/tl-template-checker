@@ -42,13 +42,12 @@ final class TLTemplateChecker {
 	protected static $_instance = null;
 
 	/**
-	 * Main WooCommerce Instance
+	 * Main TLTemplateChecker Instance
 	 *
-	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
+	 * Ensures only one instance of TLTemplateChecker is loaded or can be loaded.
 	 *
 	 * @since 1.0.0
 	 * @static
-	 * @see WC()
 	 * @return TLTemplateChecker - Main instance
 	 */
 	public static function instance() {
@@ -139,10 +138,9 @@ final class TLTemplateChecker {
 endif;
 
 /**
- * Returns the main instance of WC to prevent the need to use globals.
+ * Returns the main instance of TLTPLC to prevent the need to use globals.
  *
- * @since  2.1
- * @return WooCommerce
+ * @since  1.0.0
  */
 function TLTPLC() {
 	return TLTemplateChecker::instance();

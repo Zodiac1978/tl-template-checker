@@ -2,7 +2,7 @@
 /**
  * Setup menus in WP admin.
  *
- * @author 		WooThemes
+ * @author 		WooThemes/TLTemplateChecker
  * @version     1.0.0
  */
 

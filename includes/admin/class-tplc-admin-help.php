@@ -2,7 +2,7 @@
 /**
  * Add some content to the help tab.
  *
- * @author 		WooThemes
+ * @author 		WooThemes/TLTemplateChecker
  * @version     1.0.0
  */
 

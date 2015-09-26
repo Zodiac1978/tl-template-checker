@@ -2,7 +2,7 @@
 /**
  * Debug/Status page
  *
- * @author 		WooThemes
+ * @author 		WooThemes/TLTemplateChecker
  * @version     1.0.0
  */
 
@@ -28,18 +28,18 @@ class TPLC_Admin_Status {
 	 * Handles output of report
 	 */
 	static public function status_report() {
-		global $woocommerce, $wpdb;
 
 		include_once( 'views/html-admin-page-status-report.php' );
+
 	}
 
 	/**
 	 * Handles output of diff
 	 */
 	static public function status_diff() {
-		global $woocommerce, $wpdb;
 
 		include_once( 'views/html-admin-page-status-diff.php' );
+
 	}
 
 

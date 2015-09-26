@@ -193,15 +193,3 @@ msgstr "Torsten Landsiedel"
 #. Author URI of the plugin/theme
 msgid "http://torstenlandsiedel.de"
 msgstr "http://torstenlandsiedel.de"
-
-#~ msgid "Child Theme Overrides"
-#~ msgstr "Überschriebene Child-Theme-Dateien"
-
-#~ msgid "Template Check"
-#~ msgstr "Template-Check"
-
-#~ msgid "No differences."
-#~ msgstr "Keine Unterschiede."
-
-#~ msgid "WooCommerce"
-#~ msgstr "WooCommerce"
