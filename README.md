@@ -24,10 +24,15 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 
 ## Changelog
 
+### 1.0.1
+
+* Fixed typo in German translation (Thanks @pixolin)
+* Changed text for action link on plugins page (Thanks @presskopp)
+* Tested up to 4.6.1
+
 ### 1.0.0
 
 * Initial public release.
-
 
 ### 0.1.0
 
