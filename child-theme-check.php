@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Child Theme Check
  * Description: This plugin can warn you about old template files in your child theme
- * Version:     1.0.0
+ * Version:     1.0.1
  * Plugin URI:  https://github.com/Zodiac1978/tl-template-checker
  * Author:      Torsten Landsiedel
  * Author URI:  http://torstenlandsiedel.de
@@ -33,7 +33,7 @@ final class TLTemplateChecker {
 	/**
 	 * @var string
 	 */
-	public $version = '1.0.0';
+	public $version = '1.0.1';
 
 	/**
 	 * @var TLTemplateChecker The single instance of the class
