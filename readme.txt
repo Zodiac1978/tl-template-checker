@@ -23,6 +23,7 @@ If this is the case you will see a warning if the version of the parent theme fi
 Some posts about this plugin:
 
 * https://krautpress.de/2016/child-theme-dilemma/ (German)
+* https://wptavern.com/child-theme-check-plugin-helps-wordpress-users-navigate-parent-theme-updates (English)
 * http://www.elmastudio.de/en/wordpress-plugins-child-theme-check/ (English)
 * http://www.elmastudio.de/wordpress-plugin-tipp-child-theme-check/ (German)
 
