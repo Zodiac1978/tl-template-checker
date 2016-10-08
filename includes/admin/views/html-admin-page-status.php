@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h1><?php _e( 'Child Theme Check', 'child-theme-check' ); ?></h1>
+	<h1><?php _ex( 'Child Theme Check', 'Page and Menu Title', 'child-theme-check' ); ?></h1>
 
 <?php if ( ! is_child_theme() ) { ?>
 
