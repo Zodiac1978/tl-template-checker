@@ -27,7 +27,7 @@ class TPLC_Admin_Menus {
 	 * Add menu item
 	 */
 	public function status_menu() {
-		add_submenu_page( 'tools.php',  __( 'Child Theme Check', 'child-theme-check' ), __( 'Child Theme Check', 'child-theme-check' ), 'manage_options', 'tplc-status', array( $this, 'status_page' ) );
+		add_submenu_page( 'tools.php',  _x( 'Child Theme Check', 'Page and Menu Title', 'child-theme-check' ), _x( 'Child Theme Check', 'Page and Menu Title', 'child-theme-check' ), 'manage_options', 'tplc-status', array( $this, 'status_page' ) );
 	}
 
 	/**
