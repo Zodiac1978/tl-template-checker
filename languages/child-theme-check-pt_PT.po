@@ -1,0 +1,164 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Child Theme Check\n"
+"Report-Msgid-Bugs-To: https://github.com/Zodiac1978/tl-template-checker/issues\n"
+"POT-Creation-Date: 2016-10-08 22:24+0100\n"
+"PO-Revision-Date: 2016-10-08 22:33+0100\n"
+"Last-Translator: Pedro Mendonça <ped.gaspar@gmail.com>\n"
+"Language-Team: Pedro Mendonça <ped.gaspar@gmail.com>\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: child-theme-check.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: assets\n"
+
+#: child-theme-check.php:130 includes/admin/views/html-admin-page-status.php:17
+msgid "Status"
+msgstr "Estado"
+
+#: includes/admin/class-tplc-admin-help.php:36
+msgid "Documentation"
+msgstr "Documentação"
+
+#: includes/admin/class-tplc-admin-help.php:39
+msgid "Thank you for using Child Theme Check :)"
+msgstr "Obrigado por usar o Child Theme Check :)"
+
+#: includes/admin/class-tplc-admin-help.php:41
+msgid "Much more documention needs to be done here."
+msgstr "Muito mais documentação precisa ser criada aqui."
+
+#: includes/admin/class-tplc-admin-help.php:43
+msgid "Child Theme Check Github project"
+msgstr "Projecto Child Theme Check no GitHub"
+
+#: includes/admin/class-tplc-admin-help.php:49
+msgid "Found a bug?"
+msgstr "Encontrou um bug?"
+
+#: includes/admin/class-tplc-admin-help.php:52
+#, php-format
+msgid "If you find a bug within Child Theme Check you can create a ticket via <a href=\"%s\">Github issues</a>."
+msgstr "Se encontrar um bug no Child Theme Check, pode criar um <a href=\"%s\">issue no Github</a>."
+
+#: includes/admin/class-tplc-admin-help.php:54
+msgid "Community Support"
+msgstr "Suporte da comunidade"
+
+#: includes/admin/class-tplc-admin-help.php:56
+msgid "Report a bug"
+msgstr "Reportar um bug"
+
+#: includes/admin/class-tplc-admin-help.php:62
+msgid "For more information:"
+msgstr "Para mais informações:"
+
+#: includes/admin/class-tplc-admin-help.php:63
+msgid "Project on WordPress.org"
+msgstr "Projecto em WordPress.org"
+
+#: includes/admin/class-tplc-admin-help.php:64
+msgid "Project on Github"
+msgstr "Projecto no GitHub"
+
+#: includes/admin/class-tplc-admin-menus.php:30
+#: includes/admin/views/html-admin-page-status.php:2
+#: includes/admin/views/html-notice-template-check.php:13
+msgctxt "Page and Menu Title"
+msgid "Child Theme Check"
+msgstr "Verificar tema dependente"
+
+#: includes/admin/views/html-admin-page-status-diff.php:35
+msgid "There are no differences between child theme templates and parent theme templates."
+msgstr "Não há diferenças entre os <em>templates</em> do tema dependente e os <em>templates</em> do tema superior."
+
+#: includes/admin/views/html-admin-page-status-diff.php:93
+msgid "Diff for template file:"
+msgstr "Diferenças no ficheiro <em>template</em>:"
+
+#: includes/admin/views/html-admin-page-status-diff.php:100
+msgid "Parent Theme"
+msgstr "Tema superior"
+
+#: includes/admin/views/html-admin-page-status-diff.php:101
+msgid "Child Theme"
+msgstr "Tema dependente"
+
+#: includes/admin/views/html-admin-page-status-report.php:14
+msgid "Templates"
+msgstr "<em>Templates</em>"
+
+#: includes/admin/views/html-admin-page-status-report.php:49
+#, php-format
+msgid "%s <code>%s</code>: Child theme version <strong style=\"color:red\">%s</strong> is out of date. The parent theme version is <strong>%s</strong>."
+msgstr "%s <code>%s</code>: A versão <strong style=\"color:red\">%s</strong> do tema dependente está obsoleta. A versão do tema superior é <strong>%s</strong>. "
+
+#: includes/admin/views/html-admin-page-status-report.php:57
+#, php-format
+msgid "%s <code>%s</code>: Child theme is missing version keyword. The parent theme version is <strong>%s</strong>."
+msgstr "%s <code>%s</code>: O tema dependente não tem palavra-chave de versão. A versão do tema superior é <strong>%s</strong>."
+
+#: includes/admin/views/html-admin-page-status-report.php:64
+#, php-format
+msgid "%s <code>%s</code>: Parent theme is missing version keyword."
+msgstr "%s <code>%s</code>: O tema superior não tem palavra-chave de versão."
+
+#: includes/admin/views/html-admin-page-status-report.php:70
+#, php-format
+msgid "%s <code>%s</code>: Child theme version <strong style=\"color:green\">%s</strong> matches parent theme."
+msgstr "%s <code>%s</code>: A versão <strong style=\"color:green\">%s</strong> do tema dependente corresponde ao tema superior."
+
+#: includes/admin/views/html-admin-page-status-report.php:87
+#, php-format
+msgid "Template overrides by <abbr title=\"Child theme\">%s</abbr> for <abbr title=\"Parent theme\">%s</abbr>:"
+msgstr "<em>Templates</em> de <abbr title=\"Tema dependente\">%s</abbr> a substituir originais de <abbr title=\"Tema superior\">%s</abbr>:"
+
+#: includes/admin/views/html-admin-page-status-report.php:101
+msgid "No overrides present in child theme."
+msgstr "Nenhuma substituição existente no tema dependente."
+
+#: includes/admin/views/html-admin-page-status.php:7
+msgid "There is no active child theme. You have to activate a child theme under Themes to use this plugin."
+msgstr "Não está activo nenhum tema dependente. Tem que activar um tema dependente em Temas para usar este plugin."
+
+#: includes/admin/views/html-admin-page-status.php:8
+msgid "Themes"
+msgstr "Temas"
+
+#: includes/admin/views/html-admin-page-status.php:18
+msgid "Diff"
+msgstr "Diferenças"
+
+#: includes/admin/views/html-notice-template-check.php:12
+msgid "<strong>The active child theme's parent has been updated and the child theme might have outdated copies of parent theme files</strong> &#8211; please ensure you update them manually. See the child theme check for more details."
+msgstr "<strong>Foi actualizado o tema superior do tema activo, o tema dependente poderá ter cópias obsoletas de ficheiros do tema superior</strong> &#8211; por favor actualize os ficheiros manualmente. Veja a verificação do tema dependente para mais detalhes."
+
+#: includes/admin/views/html-notice-template-check.php:13
+msgid "Hide this notice"
+msgstr "Esconder esta notificação"
+
+#. Plugin Name of the plugin/theme
+msgid "Child Theme Check"
+msgstr "Child Theme Check"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/Zodiac1978/tl-template-checker"
+msgstr "https://github.com/Zodiac1978/tl-template-checker"
+
+#. Description of the plugin/theme
+msgid "This plugin can warn you about old template files in your child theme"
+msgstr "Este plugin pode informá-lo sobre ficheiros antigos no seu tema dependente"
+
+#. Author of the plugin/theme
+msgid "Torsten Landsiedel"
+msgstr "Torsten Landsiedel"
+
+#. Author URI of the plugin/theme
+msgid "http://torstenlandsiedel.de"
+msgstr "http://torstenlandsiedel.de"
