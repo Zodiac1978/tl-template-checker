@@ -24,6 +24,10 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 
 ## Changelog
 
+### 1.0.2
+
+* added Github Updater Metadata
+
 ### 1.0.1
 
 * Fixed typo in German translation (Thanks @pixolin)
