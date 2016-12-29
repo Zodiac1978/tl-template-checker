@@ -1,5 +1,5 @@
 === Child Theme Check ===
-Contributors: zodiac1978, drivingralle, fstaude, glueckpress, hinnerk, rkoller, presskopp
+Contributors: zodiac1978, drivingralle, f.staude, glueckpress, hinnerk, rkoller, presskopp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LCH9UVV7RKDFY
 Tags: child, theme, check, child theme, child theme check
 Requires at least: 3.4.0
@@ -39,6 +39,22 @@ These themes from [Elmastudio](http://www.elmastudio.de/en/) are already using t
 
 Please spread the word and if you are a theme developer, please add this to your themes too! Thanks :)
 
+Plugins can register there templates by using the tl_tplc_external_files filter hook.
+
+Example:
+
+The Plugin have the template files single-author.php and archive-author.php in the templates folder inside the plugin folder.
+In the Childtheme these files can be overwritten in the folder 'materialpool'.
+To register the templates, ths plugin uses this code.
+
+function add_template_check_external_files ( $checkArray ) {
+    $checkArray[ 'materialpool/single-author.php' ] = $plugin_base_dir . 'templates/single-author.php';
+    $checkArray[ 'materialpool/archive-author.php'] = $plugin_base_dir . 'templates/archive-author.php';
+    return $checkArray;
+}
+add_filter( 'tl_tplc_external_files', 'add_template_check_external_files' );
+
+
 == Installation ==
 
 1. Upload the zip file from this plugin on your plugins page or search for `Child Theme Check` and install it directly from the repository
@@ -62,6 +78,9 @@ If this is the case you will see a warning if the version of the parent theme fi
 2. Diff View
 
 == Changelog ==
+
+= 1.0.3 =
+* added support for plugin templates like buddypress, woocommerce and so on.
 
 = 1.0.2 =
 * added Github Updater Metadata

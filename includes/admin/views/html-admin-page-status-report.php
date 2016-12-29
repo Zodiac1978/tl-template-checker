@@ -21,7 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	$scanned_files = array();
 	$found_files   = array();
-	foreach ( $template_paths as $plugin_name => $template_path ) {
+    $external_files = apply_filters( 'tl_tplc_external_files', array() );
+
+    foreach ( $template_paths as $plugin_name => $template_path ) {
 		$scanned_files[ $plugin_name ] = TPLC_Admin_Status::scan_template_files( $template_path );
 	}
 	foreach ( $scanned_files as $plugin_name => $files ) {
@@ -77,7 +79,64 @@ if ( ! defined( 'ABSPATH' ) ) {
 			}
 		}
 	}
-	if ( $found_files ) {
+
+	// Check external files
+    foreach ( $external_files as $file => $pluginfile ) {
+
+        // skip if no php file
+        if ( ! strpos( $file, '.php' ) )
+            continue;
+
+        // Exclude functions.php
+        if ( file_exists( $pluginfile ) && basename( $pluginfile ) !== 'functions.php' ) {
+            $theme_file = $pluginfile;
+        } else {
+            $theme_file = false;
+        }
+        if ( ! file_exists( get_stylesheet_directory() . '/' . $file ) )
+            continue;
+
+        if ( $theme_file ) {
+
+            $parent_version = TPLC_Admin_Status::get_file_version( $theme_file );
+            $child_version  = TPLC_Admin_Status::get_file_version( get_stylesheet_directory() . '/' . $file );
+
+            if ( $parent_version && $child_version && ( version_compare( $child_version, $parent_version, '<' ) ) ) {
+                $found_files[ $plugin_name ][] = sprintf(
+                    __( '%s <code>%s</code>: Child theme version <strong style="color:red">%s</strong> is out of date. The parent theme version is <strong>%s</strong>.', 'child-theme-check' ),
+                    '<span class="dashicons dashicons-no-alt" style="color:red"></span>',
+                    basename( $theme_file ),
+                    $child_version ? $child_version : '-',
+                    $parent_version
+                );
+            } elseif ( ! $child_version && $parent_version ) {
+                $found_files[ $plugin_name ][] = sprintf(
+                    __( '%s <code>%s</code>: Child theme is missing version keyword. The parent theme version is <strong>%s</strong>.', 'child-theme-check' ),
+                    '<span class="dashicons dashicons-info" style="color:orange"></span>',
+                    basename( $theme_file ),
+                    $parent_version
+                );
+            } elseif ( ! $parent_version ) {
+                $found_files[ $plugin_name ][] = sprintf(
+                    __( '%s <code>%s</code>: Parent theme is missing version keyword.', 'child-theme-check' ),
+                    '<span class="dashicons dashicons-minus"></span>',
+                    basename( $theme_file )
+                );
+            } else {
+                $found_files[ $plugin_name ][] = sprintf(
+                    __( '%s <code>%s</code>: Child theme version <strong style="color:green">%s</strong> matches parent theme.', 'child-theme-check' ),
+                    '<span class="dashicons dashicons-yes" style="color:green"></span>',
+                    basename( $theme_file ),
+                    $child_version ? $child_version : '-',
+                    $parent_version
+                );
+            }
+        }
+    }
+
+
+
+    if ( $found_files ) {
 		foreach ( $found_files as $plugin_name => $found_plugin_files ) {
 			$theme = wp_get_theme();
 			$template = wp_get_theme( $theme->template );

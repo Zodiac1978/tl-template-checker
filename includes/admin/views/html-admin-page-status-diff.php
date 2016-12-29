@@ -28,10 +28,11 @@ jQuery( function($) {
 
 		$scanned_files = array();
 		$found_files   = array();
-		foreach ( $template_paths as $plugin_name => $template_path ) {
+        $external_files = apply_filters( 'tl_tplc_external_files', array() );
+
+        foreach ( $template_paths as $plugin_name => $template_path ) {
 			$scanned_files[ $plugin_name ] = TPLC_Admin_Status::scan_template_files( $template_path );
 		}
-		
 		$message = __( 'There are no differences between child theme templates and parent theme templates.', 'child-theme-check' );
 
 		foreach ( $scanned_files as $plugin_name => $files ) {
@@ -110,6 +111,74 @@ jQuery( function($) {
 
 			}
 		}
+
+        // Check external files
+        foreach ( $external_files as $file => $pluginfile ) {
+            // skip if no php file
+            if ( ! strpos( $file, '.php' ) )
+                continue;
+
+            $child_path = get_stylesheet_directory() . '/' . $file;
+
+            // Exclude functions.php
+            if ( file_exists( $pluginfile ) && basename( $pluginfile ) !== 'functions.php' ) {
+                $theme_file = $pluginfile;
+            } else {
+                $theme_file = false;
+            }
+            if ( ! file_exists( get_stylesheet_directory() . '/' . $file ) )
+                continue;
+
+            if ( $theme_file ) {
+
+                $parent_content  = TPLC_Admin_Status::get_file_content( $theme_file );
+                $child_content = TPLC_Admin_Status::get_file_content( get_stylesheet_directory() . '/' . $file );
+
+                $parent_version = TPLC_Admin_Status::get_file_version( $theme_file );
+                $child_version  = TPLC_Admin_Status::get_file_version( get_stylesheet_directory() . '/' . $file );
+
+
+                // This is important and is missing in codex :(
+                $args = array( 'show_split_view' => true );
+
+                $diff_table = wp_text_diff( $parent_content, $child_content, $args );
+
+                $theme = wp_get_theme();
+                $template = wp_get_theme( $theme->template );
+
+                if ( $diff_table ) {
+
+                    $message = ''; // reset message if diff found
+
+                    if ( $parent_version && $child_version && ( version_compare( $child_version, $parent_version, '<' ) ) ) {
+                        $status = '<span class="alignright dashicons dashicons-no-alt" style="color:red"></span>';
+                    } elseif ( ! $child_version && $parent_version ) {
+                        $status = '<span class="alignright dashicons dashicons-info" style="color:orange"></span>';
+                    } elseif ( ! $parent_version ) {
+                        $status = '<span class="alignright dashicons dashicons-minus"></span>';
+                    } else {
+                        $status = '<span class="alignright dashicons dashicons-yes" style="color:green"></span>';
+                    }
+
+                    printf(
+                        '<h3 class="trigger">%s %s %s</h3>',
+                        __('Diff for template file:', 'child-theme-check'),
+                        $file,
+                        $status
+                    );
+
+                    printf(
+                        '<div class="diff-wrapper"><table class="diff"><tr><th class="diffheader">%s: ' . $template . '</th><th>&#160;</th><th class="diffheader">%s: ' . $theme . '</th></tr></table>%s</div>',
+                        __( 'Parent Theme', 'child-theme-check'),
+                        __( 'Child Theme', 'child-theme-check'),
+                        $diff_table
+                    );
+
+                    echo '<hr class="tplc_diff_hr">';
+
+                }
+            }
+        }
 
 		echo $message;
 
