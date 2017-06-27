@@ -27,6 +27,9 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 ### 1.0.2
 
 * added Github Updater Metadata
+* updated readme.txt
+* i18n improvements (Thanks @pedromendonca)
+* Tested up to 4.8
 
 ### 1.0.1
 
@@ -36,7 +39,7 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 
 ### 1.0.0
 
-* Initial public release.
+* Initial public release
 
 ### 0.1.0
 
