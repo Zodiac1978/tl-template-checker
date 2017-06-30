@@ -3,7 +3,7 @@
 
 <?php if ( ! is_child_theme() ) { ?>
 
-	<div id="message" class="updated">
+	<div class="notice notice-error">
 		<p><?php _e( 'There is no active child theme. You have to activate a child theme under Themes to use this plugin.', 'child-theme-check' ); ?></p>
 		<p class="submit"><a class="button-primary" href="<?php echo esc_url( admin_url( 'themes.php' ) ); ?>"><?php _e( 'Themes', 'child-theme-check' ); ?></a></p>
 	</div>
