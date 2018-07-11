@@ -26,10 +26,11 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 
 ### 1.0.2
 
+* fixed some WordPress coding standards issues
 * added Github Updater Metadata
 * updated readme.txt
 * i18n improvements (Thanks @pedromendonca)
-* Tested up to 4.8
+* Tested up to 4.9
 
 ### 1.0.1
 
