@@ -118,11 +118,11 @@ if ( ! class_exists( 'TLTemplateChecker' ) ) :
 		}
 
 		/**
-		 * add link on plugin page
+		 * Add link on plugin page
 		 *
-		 * @param $links
+		 * @param  $links
 		 * @return mixed
-		 * @since 1.0.0
+		 * @since  1.0.0
 		 */
 		private function plugin_settings_link( $links ) {
 			$settings_link = '<a href="tools.php?page=tplc-status">' . __( 'Status', 'tl-template-checker' ) . '</a>';
