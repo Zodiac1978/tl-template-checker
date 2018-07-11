@@ -2,7 +2,7 @@
 /**
  * Display notices in admin.
  *
- * @author      WooThemes/TLTemplateChecker
+ * @package     WooThemes/TLTemplateChecker
  * @version     1.0.0
  */
 

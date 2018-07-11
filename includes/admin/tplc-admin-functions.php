@@ -2,7 +2,7 @@
 /**
  * TLTemplateChecker Admin Functions
  *
- * @author      WooThemes/TLTemplateChecker
+ * @package     WooThemes/TLTemplateChecker
  * @version     1.0.0
  */
 
@@ -23,5 +23,3 @@ function tplc_get_screen_ids() {
 
 	return $screen_ids;
 }
-
-

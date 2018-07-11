@@ -2,11 +2,13 @@
 /**
  * Debug/Status page
  *
- * @author      WooThemes/TLTemplateChecker
+ * @package     WooThemes/TLTemplateChecker
  * @version     1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 
