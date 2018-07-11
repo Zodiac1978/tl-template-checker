@@ -1,10 +1,10 @@
 <?php
-
 /**
  * Admin View: Notice - Template Check
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 ?>
 

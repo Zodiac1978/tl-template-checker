@@ -1,10 +1,10 @@
 <?php
-
 /**
  * Admin View: Page - Status Report
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 ?>
 
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<tbody>
 	<?php
 
-	$template_paths = array ( get_template_directory() . '/' );
+	$template_paths = array( get_template_directory() . '/' );
 
 	$scanned_files = array();
 	$found_files   = array();
@@ -27,13 +27,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	foreach ( $scanned_files as $plugin_name => $files ) {
 		foreach ( $files as $file ) {
 
-			// skip if no php file
+			// Skip if no php file.
 			if ( ! strpos( $file, '.php' ) )
 				continue;
 
 			$child_path = get_stylesheet_directory() . '/' . $file;
 
-			// Exclude functions.php
+			// Exclude functions.php.
 			if ( file_exists( $child_path ) && basename( $file ) !== 'functions.php' ) {
 				$theme_file = $child_path;
 			} else {
@@ -79,11 +79,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	}
 	if ( $found_files ) {
 		foreach ( $found_files as $plugin_name => $found_plugin_files ) {
-			$theme = wp_get_theme();
+			$theme    = wp_get_theme();
 			$template = wp_get_theme( $theme->template );
 		?>
 			<tr>
-				<td><?php printf(
+				<td><?php 
+					printf(
 					__( 'Template overrides by <abbr title="Child theme">%s</abbr> for <abbr title="Parent theme">%s</abbr>:', 'child-theme-check' ),
 					$theme,
 					$template
@@ -98,7 +99,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	} else {
 	?>
 		<tr>
-			<td><?php _e( 'No overrides present in child theme.', 'child-theme-check' ); ?></td>
+			<td><?php esc_html_e( 'No overrides present in child theme.', 'child-theme-check' ); ?></td>
 		</tr>
 	<?php
 	}
