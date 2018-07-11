@@ -46,65 +46,70 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		/**
 		 * Retrieve complete content from a file. Based on WP Core's get_file_data function
 		 *
-		 * @since  2.1.1
+		 * @since  1.0.0
 		 * @param  string $file Path to the file.
-		 * @param  array $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
+		 * @param  array  $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
 		 */
-		static public function get_file_content( $file ) {
+		public static function get_file_content( $file ) {
 			// We don't need to write to the file, so just open for reading.
-			$handle = fopen( $file, 'r' );
+			$handle = fopen( $file, 'r' ); // @codingStandardsIgnoreLine.
 
 			// Pull full content.
-			$content = fread($handle, filesize($file));
+			$content = fread( $handle, filesize( $file ) ); // @codingStandardsIgnoreLine.
 
 			// PHP will close file handle, but we are good citizens.
-			fclose( $handle );
+			fclose( $handle ); // @codingStandardsIgnoreLine.
 
-			return $content ;
+			return $content;
 		}
 
 
 		/**
 		 * Retrieve metadata from a file. Based on WP Core's get_file_data function
 		 *
-		 * @since 2.1.1
+		 * @since 1.0.0
 		 * @param string $file Path to the file.
 		 * @param array $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
 		 */
-		static public function get_file_version( $file ) {
+		public static function get_file_version( $file ) {
 			// We don't need to write to the file, so just open for reading.
-			$fp = fopen( $file, 'r' );
+			$fp = fopen( $file, 'r' ); // @codingStandardsIgnoreLine.
 
 			// Pull only the first 8kiB of the file in.
-			$file_data = fread( $fp, 8192 );
+			$file_data = fread( $fp, 8192 ); // @codingStandardsIgnoreLine.
 
 			// PHP will close file handle, but we are good citizens.
-			fclose( $fp );
+			fclose( $fp ); // @codingStandardsIgnoreLine.
 
 			// Make sure we catch CR-only line endings.
 			$file_data = str_replace( "\r", "\n", $file_data );
 			$version   = '';
 			$keyword   = apply_filters( 'tl_tplc_version_keyword', '@version' );
 
-			if ( preg_match( '/^[ \t\/*#@]*' . preg_quote( $keyword, '/' ) . '(.*)$/mi', $file_data, $match ) && $match[1] )
+			if ( preg_match( '/^[ \t\/*#@]*' . preg_quote( $keyword, '/' ) . '(.*)$/mi', $file_data, $match ) && $match[1] ) {
 				$version = _cleanup_header_comment( $match[1] );
+			}
 
-			return $version ;
+			return $version;
 		}
 
 		/**
-		 * Scan the template files
+		 * Scan the template files.
 		 *
 		 * @access public
-	 	 * @param string $template_path
-	 	 * @return array
+		 * @param string $template_path Path to the template directory.
+		 * @return array
 		 */
-		static public function scan_template_files( $template_path ) {
-			$files         = scandir( $template_path );
-			$result        = array();
-			if ( $files ) {
+		public static function scan_template_files( $template_path ) {
+			$files  = @scandir( $template_path ); // @codingStandardsIgnoreLine.
+			$result = array();
+
+			if ( ! empty( $files ) ) {
+
 				foreach ( $files as $key => $value ) {
-					if ( ! in_array( $value, array( '.', '..' ) ) ) {
+
+					if ( ! in_array( $value, array( '.', '..' ), true ) ) {
+
 						if ( is_dir( $template_path . DIRECTORY_SEPARATOR . $value ) ) {
 							$sub_files = TPLC_Admin_Status::scan_template_files( $template_path . DIRECTORY_SEPARATOR . $value );
 							foreach ( $sub_files as $sub_file ) {

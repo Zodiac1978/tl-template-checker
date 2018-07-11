@@ -20,7 +20,7 @@ class TPLC_Admin_Notices {
 	 * @var array
 	 */
 	private $notices = array(
-		'template_files'      => 'template_file_check_notice'
+		'template_files' => 'template_file_check_notice',
 	);
 
 	/**
@@ -104,22 +104,21 @@ class TPLC_Admin_Notices {
 	 * Show a notice highlighting bad template files
 	 */
 	public function template_file_check_notice() {
-		
-		require_once( 'class-tplc-admin-status.php' );
 
+		require_once 'class-tplc-admin-status.php';
 
 		$template_path = get_template_directory() . '/';
 
 		$parent_theme_templates = TPLC_Admin_Status::scan_template_files( $template_path );
 		// TPLC_Admin_Status::scan_template_files( WC()->plugin_path() . '/templates' );
-		$outdated       = false;
+		$outdated = false;
 
 		foreach ( $parent_theme_templates as $file ) {
 			$theme_file = false;
-			
+
 			$child_path = get_stylesheet_directory() . '/' . $file;
 
-			// Exclude functions.php
+			// Exclude functions.php.
 			if ( file_exists( $child_path ) && basename( $file ) !== 'functions.php' ) {
 				$theme_file = $child_path;
 			} else {
@@ -138,7 +137,7 @@ class TPLC_Admin_Notices {
 		}
 
 		if ( $outdated ) {
-			include( 'views/html-notice-template-check.php' );
+			include 'views/html-notice-template-check.php';
 		} else {
 			self::remove_notice( 'template_files' );
 		}
