@@ -14,128 +14,124 @@
  * GitHub Branch: master
  */
 
-
-
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 if ( ! class_exists( 'TLTemplateChecker' ) ) :
 
-
-
-/**
- * Main TL-Template-Checker Class
- *
- * @class TLTemplateChecker
- * @version	1.0.0
- */
-final class TLTemplateChecker {
-
 	/**
-	 * @var string
-	 */
-	public $version = '1.0.2';
-
-	/**
-	 * @var TLTemplateChecker The single instance of the class
-	 * @since 1.0.0
-	 */
-	protected static $_instance = null;
-
-	/**
-	 * Main TLTemplateChecker Instance
+	 * Main TL-Template-Checker Class
 	 *
-	 * Ensures only one instance of TLTemplateChecker is loaded or can be loaded.
-	 *
-	 * @since 1.0.0
-	 * @static
-	 * @return TLTemplateChecker - Main instance
+	 * @class TLTemplateChecker
+	 * @version 1.0.0
 	 */
-	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+	final class TLTemplateChecker {
+
+		/**
+		 * @var string
+		 */
+		public $version = '1.0.2';
+
+		/**
+		 * @var TLTemplateChecker The single instance of the class
+		 * @since 1.0.0
+		 */
+		protected static $_instance = null;
+
+		/**
+		 * Main TLTemplateChecker Instance
+		 *
+		 * Ensures only one instance of TLTemplateChecker is loaded or can be loaded.
+		 *
+		 * @since 1.0.0
+		 * @static
+		 * @return TLTemplateChecker - Main instance
+		 */
+		public static function instance() {
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
+			}
+			return self::$_instance;
 		}
-		return self::$_instance;
-	}
 
-	/**
-	 * TLTemplateChecker Constructor.
-	 */
-	public function __construct() {
-		$this->includes();
-		$this->hooks();
-	}
-
-	/**
-	 * Hook into actions and filters
-	 *
-	 * @since  1.0.0
-	 */
-	private function hooks() {
-		add_action( 'init', array( $this, 'init' ), 0 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
-		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ) , array( $this, 'plugin_settings_link' ) );
-	}
-
-	/**
-	 * Init TLTemplateChecker when WordPress Initialises.
-	 *
-	 * @since  1.0.0
-	 */
-	public function init() {
-		// Set up localisation
-		$this->load_plugin_textdomain();
-	}
-
-	/**
-	 * Include required files used in admin.
-	 *
-	 * @since  1.0.0
-	 */
-	public function includes() {
-		if ( is_admin() ) {
-			include_once( 'includes/admin/class-tplc-admin.php' );
+		/**
+		 * TLTemplateChecker Constructor.
+		 */
+		public function __construct() {
+			$this->includes();
+			$this->hooks();
 		}
-	}
 
-	/**
-	 * Load styles in admin.
-	 *
-	 * @since  1.0.0
-	 */
-	public function admin_styles() {
-	    if ( is_admin() ) {
-			wp_enqueue_style( 'tplc_admin_styles', plugins_url('/assets/css/admin.min.css', __FILE__), array() );
+		/**
+		 * Hook into actions and filters
+		 *
+		 * @since  1.0.0
+		 */
+		private function hooks() {
+			add_action( 'init', array( $this, 'init' ), 0 );
+			add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
+			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_settings_link' ) );
 		}
+
+		/**
+		 * Init TLTemplateChecker when WordPress Initialises.
+		 *
+		 * @since  1.0.0
+		 */
+		public function init() {
+			// Set up localisation.
+			$this->load_plugin_textdomain();
+		}
+
+		/**
+		 * Include required files used in admin.
+		 *
+		 * @since  1.0.0
+		 */
+		public function includes() {
+			if ( is_admin() ) {
+				include_once 'includes/admin/class-tplc-admin.php';
+			}
+		}
+
+		/**
+		 * Load styles in admin.
+		 *
+		 * @since  1.0.0
+		 */
+		public function admin_styles() {
+			if ( is_admin() ) {
+				wp_enqueue_style( 'tplc_admin_styles', plugins_url( '/assets/css/admin.min.css', __FILE__ ), array() );
+			}
+		}
+
+		/**
+		 * Load plugin textdomain.
+		 *
+		 * @since 1.0.0
+		 */
+		private function load_plugin_textdomain() {
+			if ( is_admin() ) {
+				load_plugin_textdomain( 'child-theme-check', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+			}
+		}
+
+		/**
+		 * add link on plugin page
+		 *
+		 * @param $links
+		 * @return mixed
+		 * @since 1.0.0
+		 */
+		private function plugin_settings_link( $links ) {
+			$settings_link = '<a href="tools.php?page=tplc-status">' . __( 'Status', 'tl-template-checker' ) . '</a>';
+			array_unshift( $links, $settings_link );
+
+			return $links;
+		}
+
 	}
-
-	/**
-	 * Load plugin textdomain.
-	 *
-	 * @since 1.0.0
-	 */
-	private function load_plugin_textdomain() {
-		if ( is_admin() ) {
-	  		load_plugin_textdomain( 'child-theme-check', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
-	  	}
-	}
-
-	/**
-	 * add link on plugin page
-	 *
-	 * @param $links
-	 * @return mixed
-	 * @since 1.0.0
-	 */
-	function plugin_settings_link( $links ) {
-	    $settings_link = '<a href="tools.php?page=tplc-status">' . __('Status', 'tl-template-checker') . '</a>';
-	    array_unshift($links, $settings_link);
-
-	    return $links;
-	}
-
-}
 
 endif;
 
