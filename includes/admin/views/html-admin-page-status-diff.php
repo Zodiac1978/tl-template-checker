@@ -1,6 +1,8 @@
 <?php
 /**
  * Admin View: Page - Status Diff
+ *
+ * @package TLTemplateChecker
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -38,8 +40,9 @@ jQuery( function($) {
 			foreach ( $files as $file ) {
 
 				// Skip if no php file.
-				if ( ! strpos( $file, '.php' ) )
+				if ( ! strpos( $file, '.php' ) ) {
 					continue;
+				}
 
 				$child_path = get_stylesheet_directory() . '/' . $file;
 

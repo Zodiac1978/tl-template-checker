@@ -23,7 +23,7 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		public static function output() {
 			$current_tab = ! empty( $_REQUEST['tab'] ) ? sanitize_title( $_REQUEST['tab'] ) : 'status';
 
-			include_once 'views/html-admin-page-status.php';
+			include_once dirname( __FILE__ ) . 'views/html-admin-page-status.php';
 		}
 
 		/**
@@ -31,7 +31,7 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 */
 		public static function status_report() {
 
-			include_once 'views/html-admin-page-status-report.php';
+			include_once dirname( __FILE__ ) . 'views/html-admin-page-status-report.php';
 
 		}
 
@@ -40,7 +40,7 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 */
 		public static function status_diff() {
 
-			include_once 'views/html-admin-page-status-diff.php';
+			include_once dirname( __FILE__ ) . 'views/html-admin-page-status-diff.php';
 
 		}
 
@@ -53,6 +53,12 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 * @param  array  $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
 		 */
 		public static function get_file_content( $file ) {
+
+			// Avoid notices if file does not exist.
+			if ( ! file_exists( $file ) ) {
+				return '';
+			}
+
 			// We don't need to write to the file, so just open for reading.
 			$handle = fopen( $file, 'r' ); // @codingStandardsIgnoreLine.
 
@@ -71,9 +77,15 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 *
 		 * @since 1.0.0
 		 * @param string $file Path to the file.
-		 * @param array $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
+		 * @param array  $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
 		 */
 		public static function get_file_version( $file ) {
+
+			// Avoid notices if file does not exist.
+			if ( ! file_exists( $file ) ) {
+				return '';
+			}
+
 			// We don't need to write to the file, so just open for reading.
 			$fp = fopen( $file, 'r' ); // @codingStandardsIgnoreLine.
 

@@ -1,6 +1,8 @@
 <?php
 /**
  * Admin View: Page - Status Report
+ *
+ * @package TLTemplateChecker
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <table class="tplc_status_table widefat" id="status">
 	<thead>
 	<tr>
-		<th><?php _e( 'Templates', 'child-theme-check' ); ?></th>
+		<th><?php esc_html_e( 'Templates', 'child-theme-check' ); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -28,8 +30,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		foreach ( $files as $file ) {
 
 			// Skip if no php file.
-			if ( ! strpos( $file, '.php' ) )
+			if ( ! strpos( $file, '.php' ) ) {
 				continue;
+			}
 
 			$child_path = get_stylesheet_directory() . '/' . $file;
 
@@ -46,7 +49,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				if ( $parent_version && $child_version && ( version_compare( $child_version, $parent_version, '<' ) ) ) {
 					$found_files[ $plugin_name ][] = sprintf(
-						__( '%s <code>%s</code>: Child theme version <strong style="color:red">%s</strong> is out of date. The parent theme version is <strong>%s</strong>.', 'child-theme-check' ),
+						/* translators: %1$s Markup for Icon, %2$s Filename, %3$s Version number from child theme, %4$s Version number from parent theme */
+						__( '%1$s <code>%2$s</code>: Child theme version <strong style="color:red">%3$s</strong> is out of date. The parent theme version is <strong>%4$s</strong>.', 'child-theme-check' ),
 						'<span class="dashicons dashicons-no-alt" style="color:red"></span>',
 						basename( $theme_file ),
 						$child_version ? $child_version : '-',
@@ -54,24 +58,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 					);
 				} elseif ( ! $child_version && $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
-						__( '%s <code>%s</code>: Child theme is missing version keyword. The parent theme version is <strong>%s</strong>.', 'child-theme-check' ),
+						/* translators: %1$s Markup for Icon, %2$s Filename, %3$s Version number from parent theme */
+						__( '%1$s <code>%2$s</code>: Child theme is missing version keyword. The parent theme version is <strong>%3$s</strong>.', 'child-theme-check' ),
 						'<span class="dashicons dashicons-info" style="color:orange"></span>',
 						basename( $theme_file ),
 						$parent_version
 					);
 				} elseif ( ! $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
-						__( '%s <code>%s</code>: Parent theme is missing version keyword.', 'child-theme-check' ),
+						/* translators: %1$s Markup for Icon, %2$s Filename */
+						__( '%1$s <code>%2$s</code>: Parent theme is missing version keyword.', 'child-theme-check' ),
 						'<span class="dashicons dashicons-minus"></span>',
 						basename( $theme_file )
 					);
 				} else {
 					$found_files[ $plugin_name ][] = sprintf(
-						__( '%s <code>%s</code>: Child theme version <strong style="color:green">%s</strong> matches parent theme.', 'child-theme-check' ),
+						/* translators: %1$s Markup for Icon, %2$s Filename, %3$s Version number from child theme */
+						__( '%1$s <code>%2$s</code>: Child theme version <strong style="color:green">%3$s</strong> matches parent theme.', 'child-theme-check' ),
 						'<span class="dashicons dashicons-yes" style="color:green"></span>',
 						basename( $theme_file ),
-						$child_version ? $child_version : '-',
-						$parent_version
+						$child_version ? $child_version : '-'
 					);
 				}
 			}
@@ -83,17 +89,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$template = wp_get_theme( $theme->template );
 		?>
 			<tr>
-				<td><?php 
-					printf(
-					__( 'Template overrides by <abbr title="Child theme">%s</abbr> for <abbr title="Parent theme">%s</abbr>:', 'child-theme-check' ),
-					$theme,
-					$template
-				); ?></td>
+				<td>
+				<?php
+				printf(
+					/* translators: %1$s Name of child theme, %2$s Name of parent theme */
+					__( 'Template overrides by <abbr title="Child theme">%1$s</abbr> for <abbr title="Parent theme">%2$s</abbr>:', 'child-theme-check' ),
+					esc_html( $theme ),
+					esc_html( $template )
+				);
+				?>
+				</td>
 			</tr>
 			<tr>
-				<td><?php echo implode( '<br>', $found_plugin_files ); ?></td>
+				<td><?php echo implode( '<br>', esc_html( $found_plugin_files ) ); ?></td>
 			</tr>
-			
+
 		<?php
 		}
 	} else {

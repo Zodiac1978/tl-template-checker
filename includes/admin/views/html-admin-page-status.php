@@ -1,17 +1,20 @@
 <?php
 /**
  * Admin View: Page Status
+ *
+ * @package TLTemplateChecker
  */
+
 ?>
 
 <div class="wrap">
-	<h1><?php _ex( 'Child Theme Check', 'Page and Menu Title', 'child-theme-check' ); ?></h1>
+	<h1><?php esc_html( _ex( 'Child Theme Check', 'Page and Menu Title', 'child-theme-check' ) ); ?></h1>
 
 <?php if ( ! is_child_theme() ) { ?>
 
 	<div class="notice notice-error">
-		<p><?php _e( 'There is no active child theme. You have to activate a child theme under Themes to use this plugin.', 'child-theme-check' ); ?></p>
-		<p class="submit"><a class="button-primary" href="<?php echo esc_url( admin_url( 'themes.php' ) ); ?>"><?php _e( 'Themes', 'child-theme-check' ); ?></a></p>
+		<p><?php esc_html_e( 'There is no active child theme. You have to activate a child theme under Themes to use this plugin.', 'child-theme-check' ); ?></p>
+		<p class="submit"><a class="button-primary" href="<?php echo esc_url( admin_url( 'themes.php' ) ); ?>"><?php esc_html_e( 'Themes', 'child-theme-check' ); ?></a></p>
 	</div>
 </div>
 
@@ -27,7 +30,7 @@
 				printf( '<a href="%s" class="nav-tab %s">%s</a>',
 					esc_url( admin_url( 'admin.php?page=tplc-status&amp;tab=' . $name ) ),
 					$current_tab === $name ? 'nav-tab-active' : '',
-					$label
+					esc_html( $label )
 				);
 			}
 			?>

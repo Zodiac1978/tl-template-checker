@@ -17,9 +17,10 @@ class TPLC_Admin_Notices {
 
 	/**
 	 * Array of notices - name => callback
+	 *
 	 * @var array
 	 */
-	private $notices = array(
+	private static $notices = array(
 		'template_files' => 'template_file_check_notice',
 	);
 
@@ -42,6 +43,7 @@ class TPLC_Admin_Notices {
 
 	/**
 	 * Show a notice
+	 *
 	 * @param  string $name
 	 */
 	public static function add_notice( $name ) {
@@ -51,6 +53,7 @@ class TPLC_Admin_Notices {
 
 	/**
 	 * Remove a notice from being displayed
+	 *
 	 * @param  string $name
 	 */
 	public static function remove_notice( $name ) {
@@ -60,11 +63,12 @@ class TPLC_Admin_Notices {
 
 	/**
 	 * See if a notice is being shown
+	 *
 	 * @param  string  $name
 	 * @return boolean
 	 */
 	public static function has_notice( $name ) {
-		return in_array( $name, get_option( 'tplc_admin_notices', array() ) );
+		return in_array( $name, get_option( 'tplc_admin_notices', array() ), true );
 	}
 
 	/**
