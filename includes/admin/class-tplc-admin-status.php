@@ -23,7 +23,7 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		public static function output() {
 			$current_tab = ! empty( $_REQUEST['tab'] ) ? sanitize_title( $_REQUEST['tab'] ) : 'status';
 
-			include_once dirname( __FILE__ ) . 'views/html-admin-page-status.php';
+			include_once 'views/html-admin-page-status.php';
 		}
 
 		/**
@@ -31,7 +31,7 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 */
 		public static function status_report() {
 
-			include_once dirname( __FILE__ ) . 'views/html-admin-page-status-report.php';
+			include_once 'views/html-admin-page-status-report.php';
 
 		}
 
@@ -40,7 +40,7 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 */
 		public static function status_diff() {
 
-			include_once dirname( __FILE__ ) . 'views/html-admin-page-status-diff.php';
+			include_once 'views/html-admin-page-status-diff.php';
 
 		}
 

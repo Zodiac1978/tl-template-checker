@@ -29,16 +29,16 @@ class TPLC_Admin {
 	public function includes() {
 
 		// Functions.
-		include_once dirname( __FILE__ ) . 'tplc-admin-functions.php';
+		include_once 'tplc-admin-functions.php';
 
 		// Menus.
-		include_once dirname( __FILE__ ) . 'class-tplc-admin-menus.php';
+		include_once 'class-tplc-admin-menus.php';
 
 		// Notices.
-		include_once dirname( __FILE__ ) . 'class-tplc-admin-notices.php';
+		include_once 'class-tplc-admin-notices.php';
 
 		// Help.
-		include_once dirname( __FILE__ ) . 'class-tplc-admin-help.php';
+		include_once 'class-tplc-admin-help.php';
 
 	}
 
