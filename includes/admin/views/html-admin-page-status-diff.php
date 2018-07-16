@@ -101,7 +101,7 @@ jQuery( function($) {
 						);
 
 						printf(
-							'<div class="diff-wrapper"><table class="diff"><tr><th class="diffheader">%s: ' . $template . '</th><th>&#160;</th><th class="diffheader">%s: ' . $theme . '</th></tr></table>%s</div>',
+							'<div class="diff-wrapper"><table class="diff"><tr><th class="diffheader">%s: ' . esc_html( $template ) . '</th><th>&#160;</th><th class="diffheader">%s: ' . esc_html( $theme ) . '</th></tr></table>%s</div>',
 							esc_html__( 'Parent Theme', 'child-theme-check' ),
 							esc_html__( 'Child Theme', 'child-theme-check' ),
 							$diff_table

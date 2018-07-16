@@ -115,8 +115,7 @@ class TPLC_Admin_Notices {
 		$template_path = get_template_directory() . '/';
 
 		$parent_theme_templates = TPLC_Admin_Status::scan_template_files( $template_path );
-		// TPLC_Admin_Status::scan_template_files( WC()->plugin_path() . '/templates' );
-		$outdated = false;
+		$outdated               = false;
 
 		foreach ( $parent_theme_templates as $file ) {
 			$theme_file = false;
