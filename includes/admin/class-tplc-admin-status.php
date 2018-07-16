@@ -2,7 +2,7 @@
 /**
  * Debug/Status page
  *
- * @package     WooThemes/TLTemplateChecker
+ * @package     TLTemplateChecker
  * @version     1.0.0
  */
 
@@ -21,7 +21,7 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 * Handles output of the reports page in admin.
 		 */
 		public static function output() {
-			$current_tab = ! empty( $_REQUEST['tab'] ) ? sanitize_title( $_REQUEST['tab'] ) : 'status';
+			$current_tab = ! empty( $_REQUEST['tab'] ) ? sanitize_title( $_REQUEST['tab'] ) : 'status'; // @codingStandardsIgnoreLine.
 
 			include_once 'views/html-admin-page-status.php';
 		}
@@ -50,7 +50,6 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 *
 		 * @since  1.0.0
 		 * @param  string $file Path to the file.
-		 * @param  array  $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
 		 */
 		public static function get_file_content( $file ) {
 
@@ -77,7 +76,6 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 *
 		 * @since 1.0.0
 		 * @param string $file Path to the file.
-		 * @param array  $all_headers List of headers, in the format array('HeaderKey' => 'Header Name')
 		 */
 		public static function get_file_version( $file ) {
 

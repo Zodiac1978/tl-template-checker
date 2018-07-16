@@ -2,7 +2,7 @@
 /**
  * Add some content to the help tab.
  *
- * @package     WooThemes/TLTemplateChecker
+ * @package     TLTemplateChecker
  * @version     1.0.0
  */
 
@@ -32,7 +32,7 @@ class TPLC_Admin_Help {
 	public function add_tabs() {
 		$screen = get_current_screen();
 
-		if ( ! $screen || ! in_array( $screen->id, tplc_get_screen_ids() ) ) {
+		if ( ! $screen || ! in_array( $screen->id, tplc_get_screen_ids(), true ) ) {
 			return;
 		}
 
@@ -46,22 +46,24 @@ class TPLC_Admin_Help {
 
 					'<p>' . __( 'Much more documention needs to be done here.', 'child-theme-check' ) . '</p>' .
 
-					'<p><a href="' . 'https://github.com/Zodiac1978/tl-template-checker/' . '" class="button button-primary">' . __( 'Child Theme Check Github project', 'child-theme-check' ) . '</a></p>',
-		) );
+					'<p><a href="https://github.com/Zodiac1978/tl-template-checker/" class="button button-primary">' . __( 'Child Theme Check Github project', 'child-theme-check' ) . '</a></p>',
+			)
+		);
 
-		$screen->add_help_tab( array(
-			'id'      => 'tplc_bugs_tab',
-			'title'   => __( 'Found a bug?', 'child-theme-check' ),
-			'content' =>
+		$screen->add_help_tab(
+			array(
+				'id'      => 'tplc_bugs_tab',
+				'title'   => __( 'Found a bug?', 'child-theme-check' ),
+				'content' =>
 
-				/* translators: %s: Github URL */
-				'<p>' . sprintf( __( 'If you find a bug within Child Theme Check you can create a ticket via <a href="%s">Github issues</a>.', 'child-theme-check' ), 'https://github.com/Zodiac1978/tl-template-checker/issues?state=open' ) . '</p>' .
+					/* translators: %s: Github URL */
+					'<p>' . sprintf( __( 'If you find a bug within Child Theme Check you can create a ticket via <a href="%s">Github issues</a>.', 'child-theme-check' ), 'https://github.com/Zodiac1978/tl-template-checker/issues?state=open' ) . '</p>' .
 
-				'<a href="' . 'https://wordpress.org/support/plugin/child-theme-check/' . '" class="button">' . __( 'Community Support', 'child-theme-check' ) . '</a>' .
+					'<a href="https://wordpress.org/support/plugin/child-theme-check/" class="button">' . __( 'Community Support', 'child-theme-check' ) . '</a>' .
 
-				'<p><a href="https://github.com/Zodiac1978/tl-template-checker/issues?state=open" class="button button-primary">' . __( 'Report a bug', 'child-theme-check' ) . '</a></p>',
-
-		) );
+					'<p><a href="https://github.com/Zodiac1978/tl-template-checker/issues?state=open" class="button button-primary">' . __( 'Report a bug', 'child-theme-check' ) . '</a></p>',
+			)
+		);
 
 		$screen->set_help_sidebar(
 			'<p><strong>' . __( 'For more information:', 'child-theme-check' ) . '</strong></p>' .

@@ -3,7 +3,7 @@
  * TLTemplateChecker Admin.
  *
  * @class       TPLC_Admin
- * @package     WooThemes/TLTemplateChecker
+ * @package     TLTemplateChecker
  * @version     1.0.0
  */
 

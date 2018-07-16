@@ -2,7 +2,7 @@
 /**
  * Display notices in admin.
  *
- * @package     WooThemes/TLTemplateChecker
+ * @package     TLTemplateChecker
  * @version     1.0.0
  */
 
@@ -44,7 +44,7 @@ class TPLC_Admin_Notices {
 	/**
 	 * Show a notice
 	 *
-	 * @param  string $name
+	 * @param  string $name Notice name.
 	 */
 	public static function add_notice( $name ) {
 		$notices = array_unique( array_merge( get_option( 'tplc_admin_notices', array() ), array( $name ) ) );
@@ -54,7 +54,7 @@ class TPLC_Admin_Notices {
 	/**
 	 * Remove a notice from being displayed
 	 *
-	 * @param  string $name
+	 * @param  string $name Notice name.
 	 */
 	public static function remove_notice( $name ) {
 		$notices = array_diff( get_option( 'tplc_admin_notices', array() ), array( $name ) );
@@ -64,7 +64,7 @@ class TPLC_Admin_Notices {
 	/**
 	 * See if a notice is being shown
 	 *
-	 * @param  string  $name
+	 * @param  string $name Notice name.
 	 * @return boolean
 	 */
 	public static function has_notice( $name ) {
@@ -76,15 +76,16 @@ class TPLC_Admin_Notices {
 	 */
 	public function hide_notices() {
 		if ( isset( $_GET['hide_template_files_notice'] ) ) {
-			$hide_notice = sanitize_text_field( $_GET['hide_template_files_notice'] );
+			$hide_notice = sanitize_text_field( wp_unslash( $_GET['hide_template_files_notice'] ) );
 			self::remove_notice( $hide_notice );
 		}
 	}
 
 	/**
 	 * Prevent hiding notices action from being fired on page refresh.
-	 *
 	 * Works with filter 'removable_query_args' since WP version 4.2
+	 *
+	 * @param  Array $removable_query_args Array of query arguments.
 	 */
 	public function removable_query_args( $removable_query_args ) {
 		array_push( $removable_query_args, 'hide_template_files_notice' );

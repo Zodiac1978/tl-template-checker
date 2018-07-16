@@ -120,7 +120,7 @@ if ( ! class_exists( 'TLTemplateChecker' ) ) :
 		/**
 		 * Add link on plugin page
 		 *
-		 * @param  $links
+		 * @param Array $links Array of links for plugin list table view.
 		 * @return mixed
 		 * @since  1.0.0
 		 */

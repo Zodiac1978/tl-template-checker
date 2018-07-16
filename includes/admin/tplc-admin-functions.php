@@ -2,7 +2,7 @@
 /**
  * TLTemplateChecker Admin Functions
  *
- * @package     WooThemes/TLTemplateChecker
+ * @package     TLTemplateChecker
  * @version     1.0.0
  */
 

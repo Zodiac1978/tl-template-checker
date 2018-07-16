@@ -95,15 +95,15 @@ jQuery( function($) {
 
 						printf(
 							'<h3 class="trigger">%s %s %s</h3>',
-							__( 'Diff for template file:', 'child-theme-check' ),
-							$file,
-							$status
+							esc_html__( 'Diff for template file:', 'child-theme-check' ),
+							esc_html( $file ),
+							esc_html( $status )
 						);
 
 						printf(
 							'<div class="diff-wrapper"><table class="diff"><tr><th class="diffheader">%s: ' . $template . '</th><th>&#160;</th><th class="diffheader">%s: ' . $theme . '</th></tr></table>%s</div>',
-							__( 'Parent Theme', 'child-theme-check' ),
-							__( 'Child Theme', 'child-theme-check' ),
+							esc_html__( 'Parent Theme', 'child-theme-check' ),
+							esc_html__( 'Child Theme', 'child-theme-check' ),
 							$diff_table
 						);
 

@@ -1,8 +1,8 @@
 <?php
 /**
- * TPLC Uninstall
+ * TPLC Uninstall: Uninstalling theme option
  *
- * Uninstalling theme option
+ * @package TLTemplateChecker
  */
 
 // If uninstall not called from WordPress exit.
