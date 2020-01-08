@@ -30,7 +30,7 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 * added Github Updater Metadata
 * updated readme.txt
 * i18n improvements (Thanks @pedromendonca)
-* Tested up to 4.9
+* Tested up to 5.3
 
 ### 1.0.1
 
