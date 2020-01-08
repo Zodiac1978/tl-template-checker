@@ -1,9 +1,9 @@
 === Child Theme Check ===
-Contributors: zodiac1978, drivingralle, fstaude, glueckpress, hinnerk, rkoller, presskopp
+Contributors: zodiac1978, drivingralle, fstaude, glueckpress, hinnerk, rkoller
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LCH9UVV7RKDFY
 Tags: child, theme, check, child theme, child theme check
-Requires at least: 3.4.0
-Tested up to: 4.9
+Requires at least: 3.6.0
+Tested up to: 5.3
 Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -68,7 +68,7 @@ If this is the case you will see a warning if the version of the parent theme fi
 * added Github Updater Metadata
 * updated readme.txt
 * i18n improvements (Thanks @pedromendonca)
-* Tested up to 4.9
+* Tested up to 5.3
 
 = 1.0.1 =
 * Fixed typo in German translation (Thanks @pixolin)
