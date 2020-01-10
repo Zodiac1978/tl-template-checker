@@ -97,7 +97,7 @@ jQuery( function($) {
 							'<h3 class="trigger">%s %s %s</h3>',
 							esc_html__( 'Diff for template file:', 'child-theme-check' ),
 							esc_html( $file ),
-							esc_html( $status )
+							$status
 						);
 
 						printf(

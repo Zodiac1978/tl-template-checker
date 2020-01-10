@@ -87,7 +87,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		foreach ( $found_files as $plugin_name => $found_plugin_files ) {
 			$theme    = wp_get_theme();
 			$template = wp_get_theme( $theme->template );
-		?>
+			?>
 			<tr>
 				<td>
 				<?php
@@ -101,17 +101,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</td>
 			</tr>
 			<tr>
-				<td><?php echo implode( '<br>', esc_html( $found_plugin_files ) ); ?></td>
+				<td><?php echo implode( '<br>', $found_plugin_files ); ?></td>
 			</tr>
 
-		<?php
+			<?php
 		}
 	} else {
-	?>
+		?>
 		<tr>
 			<td><?php esc_html_e( 'No overrides present in child theme.', 'child-theme-check' ); ?></td>
 		</tr>
-	<?php
+		<?php
 	}
 	?>
 </tbody>
