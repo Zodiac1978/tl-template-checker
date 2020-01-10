@@ -32,6 +32,7 @@ These themes from [Elmastudio](http://www.elmastudio.de/en/) are already using t
 * Uku
 * Uku Light
 * Weta
+* Pukeko
 * Zeitreise
 * Werkstatt
 * Neubau
