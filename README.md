@@ -29,7 +29,7 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 * fixed some WordPress coding standards issues
 * added Github Updater Metadata
 * updated readme.txt
-* i18n improvements (Thanks [@pedromendonca](https://github.com/pedro-mendonca))
+* i18n improvements (Thanks [@pedro-mendonca](https://github.com/pedro-mendonca))
 * Tested up to 5.3
 
 ### 1.0.1
