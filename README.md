@@ -29,19 +29,15 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 * fixed some WordPress coding standards issues
 * added Github Updater Metadata
 * updated readme.txt
-* i18n improvements (Thanks @pedromendonca)
+* i18n improvements (Thanks [@pedromendonca](https://github.com/pedro-mendonca))
 * Tested up to 5.3
 
 ### 1.0.1
 
-* Fixed typo in German translation (Thanks @pixolin)
-* Changed text for action link on plugins page (Thanks @presskopp)
+* Fixed typo in German translation (Thanks [@pixolin](https://github.com/pixolin))
+* Changed text for action link on plugins page (Thanks [@presskopp](https://github.com/presskopp))
 * Tested up to 4.6.1
 
 ### 1.0.0
 
 * Initial public release
-
-### 0.1.0
-
-* Initial release. (Proof-of-concept / Beta - DO NOT USE ON PRODUCTION SITES!)
