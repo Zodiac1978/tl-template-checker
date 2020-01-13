@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/Zodiac1978/tl-template-checker/badges/gpa.svg)](https://codeclimate.com/github/Zodiac1978/tl-template-checker)
+[![Code Climate](https://codeclimate.com/github/Zodiac1978/tl-template-checker/badges/gpa.svg)](https://codeclimate.com/github/Zodiac1978/tl-template-checker) [![Donate with PayPal](https://img.shields.io/badge/PayPal-Donate-yellow.svg)](https://paypal.me/zodiac1978)
 
 # Child Theme Check
 
