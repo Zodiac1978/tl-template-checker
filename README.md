@@ -24,6 +24,12 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 
 ## Changelog
 
+### 1.0.3
+
+* Fix flashing of first diff view
+* More i18n improvements (Thanks @pedromendonca)
+* Tested up to 5.4
+
 ### 1.0.2
 
 * fixed some WordPress coding standards issues
