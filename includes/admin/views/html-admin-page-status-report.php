@@ -49,35 +49,49 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				if ( $parent_version && $child_version && ( version_compare( $child_version, $parent_version, '<' ) ) ) {
 					$found_files[ $plugin_name ][] = sprintf(
-						/* translators: %1$s Markup for Icon, %2$s Filename, %3$s Version number from child theme, %4$s Version number from parent theme */
-						__( '%1$s <code>%2$s</code>: Child theme version <strong style="color:red">%3$s</strong> is out of date. The parent theme version is <strong>%4$s</strong>.', 'child-theme-check' ),
+						'%1$s %2$s: %3$s %4$s',
 						'<span class="dashicons dashicons-no-alt" style="color:red"></span>',
-						basename( $theme_file ),
-						$child_version ? $child_version : '-',
-						$parent_version
+						'<code>' . basename( $theme_file ) . '</code>',
+						sprintf(
+							/* translators: %s Version number. */
+							__( 'Child theme version %s is out of date.', 'child-theme-check' ),
+							$child_version ? '<strong style="color:red">' . $child_version . '</strong>' : '-' 
+						),
+						sprintf(
+							/* translators: %s Version number. */
+							__( 'Parent theme version is %s.', 'child-theme-check' ),
+							'<strong>' . $parent_version . '</strong>'
+						)
 					);
 				} elseif ( ! $child_version && $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
-						/* translators: %1$s Markup for Icon, %2$s Filename, %3$s Version number from parent theme */
-						__( '%1$s <code>%2$s</code>: Child theme is missing version keyword. The parent theme version is <strong>%3$s</strong>.', 'child-theme-check' ),
+						'%1$s %2$s: %3$s %4$s',
 						'<span class="dashicons dashicons-info" style="color:orange"></span>',
-						basename( $theme_file ),
-						$parent_version
+						'<code>' . basename( $theme_file ) . '</code>',
+						__( 'Child theme is missing version keyword.', 'child-theme-check' ),
+						sprintf(
+							/* translators: %s Version number. */
+							__( 'Parent theme version is %s.', 'child-theme-check' ),
+							'<strong>' . $parent_version . '</strong>'
+						)
 					);
 				} elseif ( ! $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
-						/* translators: %1$s Markup for Icon, %2$s Filename */
-						__( '%1$s <code>%2$s</code>: Parent theme is missing version keyword.', 'child-theme-check' ),
+						'%1$s %2$s: %3$s',
 						'<span class="dashicons dashicons-minus"></span>',
-						basename( $theme_file )
+						'<code>' . basename( $theme_file ) . '</code>',
+						__( 'Parent theme is missing version keyword.', 'child-theme-check' )
 					);
 				} else {
 					$found_files[ $plugin_name ][] = sprintf(
-						/* translators: %1$s Markup for Icon, %2$s Filename, %3$s Version number from child theme */
-						__( '%1$s <code>%2$s</code>: Child theme version <strong style="color:green">%3$s</strong> matches parent theme.', 'child-theme-check' ),
+						'%1$s %2$s: %3$s',
 						'<span class="dashicons dashicons-yes" style="color:green"></span>',
-						basename( $theme_file ),
-						$child_version ? $child_version : '-'
+						'<code>' . basename( $theme_file ) . '</code>',
+						sprintf(
+							/* translators: %s Version number. */
+							__( 'Child theme version %s matches parent theme.', 'child-theme-check' ),
+							$child_version ? '<strong style="color:green">' . $child_version . '</strong>' : '-'
+						)
 					);
 				}
 			}
@@ -92,10 +106,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<td>
 				<?php
 				printf(
-					/* translators: %1$s Name of child theme, %2$s Name of parent theme */
-					__( 'Template overrides by <abbr title="Child theme">%1$s</abbr> for <abbr title="Parent theme">%2$s</abbr>:', 'child-theme-check' ),
-					esc_html( $theme ),
-					esc_html( $template )
+					/* translators: %1$s Name of child theme, %2$s Name of parent theme. */
+					__( 'Template overrides by %1$s for %2$s:', 'child-theme-check' ),
+					'<abbr title="' . esc_attr__( 'Child Theme', 'child-theme-check' ) . '">' . esc_html( $theme ) . '</abbr>',
+					'<abbr title="' . esc_attr__( 'Parent Theme', 'child-theme-check' ) . '">' . esc_html( $template ) . '</abbr>'
 				);
 				?>
 				</td>
