@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 <script>
 jQuery( function($) {
 	$(document).ready( function() {
-		$( '.diff-wrapper' ).hide();
 		$( 'h3.trigger' ).click( function() {
 			$(this).toggleClass( 'active' ).next( '.diff-wrapper' ).slideToggle( 'fast' );
 			return false; //Prevent the browser jump to the link anchor
@@ -101,7 +100,7 @@ jQuery( function($) {
 						);
 
 						printf(
-							'<div class="diff-wrapper"><table class="diff"><tr><th class="diffheader">%s: ' . esc_html( $template ) . '</th><th>&#160;</th><th class="diffheader">%s: ' . esc_html( $theme ) . '</th></tr></table>%s</div>',
+							'<div class="diff-wrapper" style="display: none;"><table class="diff"><tr><th class="diffheader">%s: ' . esc_html( $template ) . '</th><th>&#160;</th><th class="diffheader">%s: ' . esc_html( $theme ) . '</th></tr></table>%s</div>',
 							esc_html__( 'Parent Theme', 'child-theme-check' ),
 							esc_html__( 'Child Theme', 'child-theme-check' ),
 							$diff_table
