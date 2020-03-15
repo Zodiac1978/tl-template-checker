@@ -3,7 +3,7 @@ Contributors: zodiac1978, drivingralle, fstaude, glueckpress, hinnerk, rkoller
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LCH9UVV7RKDFY
 Tags: child, theme, check, child theme, child theme check
 Requires at least: 3.6.0
-Tested up to: 5.3
+Tested up to: 5.4
 Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,11 @@ If this is the case you will see a warning if the version of the parent theme fi
 2. Diff View
 
 == Changelog ==
+
+= 1.0.3 =
+* Fix flashing of first diff view
+* More i18n improvements (Thanks @pedromendonca)
+* Tested up to 5.4
 
 = 1.0.2 =
 * fixed some WordPress coding standards issues
