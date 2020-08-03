@@ -100,7 +100,7 @@ class TPLC_Admin_Notices {
 
 		foreach ( $notices as $notice ) {
 			wp_enqueue_script( 'tplc-admin-notices' );
-			add_action( 'admin_notices', array( $this, $this->notices[ $notice ] ) );
+			add_action( 'admin_notices', array( $this, self::$notices[ $notice ] ) );
 		}
 	}
 
