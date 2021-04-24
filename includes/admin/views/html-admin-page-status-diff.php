@@ -60,23 +60,20 @@ jQuery( function($) {
 					$parent_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
 					$child_version  = TPLC_Admin_Status::get_file_version( $theme_file );
 
-					/*
-					Broken table if used: @link https://core.trac.wordpress.org/ticket/25473
-
-					$args = array(
-						'title'           => 'Differences',
-						'title_left'      => 'Parent Theme',
-						'title_right'     => 'Child Theme'
-					);
-					*/
-
-					// This is important and is missing in codex.
-					$args = array( 'show_split_view' => true );
-
-					$diff_table = wp_text_diff( $parent_content, $child_content, $args );
-
 					$theme    = wp_get_theme();
 					$template = wp_get_theme( $theme->template );
+
+					if ( version_compare( $GLOBALS['wp_version'], '5.7' ) >= 0 ) {
+						$args = array(
+							'title_left'      => esc_html__( 'Parent Theme', 'child-theme-check' ) . ': ' . esc_html( $template ),
+							'title_right'     => esc_html__( 'Child Theme', 'child-theme-check' ) . ': ' . esc_html( $theme ),
+							'show_split_view' => true,
+						);
+					} else {
+						$args = array( 'show_split_view' => true );
+					}
+
+					$diff_table = wp_text_diff( $parent_content, $child_content, $args );
 
 					if ( $diff_table ) {
 
@@ -99,12 +96,19 @@ jQuery( function($) {
 							$status
 						);
 
-						printf(
-							'<div class="diff-wrapper" style="display: none;"><table class="diff"><tr><th class="diffheader">%s: ' . esc_html( $template ) . '</th><th>&#160;</th><th class="diffheader">%s: ' . esc_html( $theme ) . '</th></tr></table>%s</div>',
-							esc_html__( 'Parent Theme', 'child-theme-check' ),
-							esc_html__( 'Child Theme', 'child-theme-check' ),
-							$diff_table
-						);
+						if ( version_compare( $GLOBALS['wp_version'], '5.7' ) >= 0 ) {
+							printf(
+								'<div class="diff-wrapper" style="display: none;">%s</div>',
+								$diff_table
+							);
+						} else {
+							printf(
+								'<div class="diff-wrapper" style="display: none;"><table class="diff"><tr><th class="diffheader">%s: ' . esc_html( $template ) . '</th><th>&#160;</th><th class="diffheader">%s: ' . esc_html( $theme ) . '</th></tr></table>%s</div>',
+								esc_html__( 'Parent Theme', 'child-theme-check' ),
+								esc_html__( 'Child Theme', 'child-theme-check' ),
+								$diff_table
+							);
+						}
 
 						echo '<hr class="tplc_diff_hr">';
 
