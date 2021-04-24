@@ -64,6 +64,11 @@ If this is the case you will see a warning if the version of the parent theme fi
 
 == Changelog ==
 
+= 1.0.4 =
+* Fix broken layout in Wordpress 5.7 (Thanks to Torsten Bulk for the report)
+* Fix PHP warning
+* Tested up to 5.7
+
 = 1.0.3 =
 * Fix flashing of first diff view
 * More i18n improvements (Thanks @pedromendonca)
