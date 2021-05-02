@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: child, theme, check, child theme, child theme check
 Requires at least: 3.6.0
 Tested up to: 5.7
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,10 +64,13 @@ If this is the case you will see a warning if the version of the parent theme fi
 
 == Changelog ==
 
-= 1.0.4 =
+= 1.0.5 =
 * Fix broken layout in Wordpress 5.7 (Thanks to Torsten Bulk for the report)
 * Fix PHP warning
 * Tested up to 5.7
+
+= 1.0.4 =
+* not released
 
 = 1.0.3 =
 * Fix flashing of first diff view
