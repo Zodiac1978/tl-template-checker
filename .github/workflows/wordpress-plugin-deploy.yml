@@ -1,15 +1,15 @@
 name: Deploy to WordPress.org
 on:
-  push:
+  release:
     tags:
-    - "*"
-    - "!*-*"
+    types: [published]
 jobs:
   tag:
-    name: New tag
+    name: New release
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - name: Checkout code
+      uses: actions/checkout@master
     - name: WordPress Plugin Deploy
       uses: 10up/action-wordpress-plugin-deploy@master
       env:
