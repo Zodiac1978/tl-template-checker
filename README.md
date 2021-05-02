@@ -24,6 +24,9 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 
 ## Changelog
 
+### 1.0.6
+* Fix CSS
+
 ### 1.0.5
 * Fix broken layout in Wordpress 5.7 (Thanks to Torsten Bulk for the report)
 * Fix PHP warning
