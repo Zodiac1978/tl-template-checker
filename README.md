@@ -24,6 +24,9 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 
 ## Changelog
 
+### 1.0.7
+* Tested with WordPress 6.5
+
 ### 1.0.6
 * Fix CSS
 
