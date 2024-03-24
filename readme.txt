@@ -1,5 +1,5 @@
 === Child Theme Check ===
-Contributors: zodiac1978, drivingralle, fstaude, glueckpress, hinnerk, rkoller
+Contributors: zodiac1978, drivingralle, fstaude, hinnerk, rkoller
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LCH9UVV7RKDFY
 Tags: child, theme, check, child theme, child theme check
 Requires at least: 3.6.0
