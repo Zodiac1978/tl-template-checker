@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: child, theme, check, child theme, child theme check
 Requires at least: 3.6.0
 Tested up to: 6.6
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,8 +64,11 @@ If this is the case you will see a warning if the version of the parent theme fi
 
 == Changelog ==
 
-= 1.0.8 =
+= 1.0.9 =
 * Tested with WordPress 6.6
+
+= 1.0.8 =
+* Upublished because of problems with SVN
 
 = 1.0.7 =
 * Tested with WordPress 6.5

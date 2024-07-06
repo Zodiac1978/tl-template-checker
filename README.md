@@ -24,8 +24,11 @@ Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can
 
 ## Changelog
 
-### 1.0.8
+### 1.0.9
 * Tested with WordPress 6.6
+
+### 1.0.8
+* Upublished because of problems with SVN
 
 ### 1.0.7
 * Tested with WordPress 6.5
