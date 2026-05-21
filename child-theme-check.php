@@ -102,7 +102,7 @@ if ( ! class_exists( 'TLTemplateChecker' ) ) :
 		 */
 		public function admin_styles() {
 			if ( is_admin() ) {
-				wp_enqueue_style( 'tplc_admin_styles', plugins_url( '/assets/css/admin.min.css', __FILE__ ), array() );
+				wp_enqueue_style( 'tplc_admin_styles', plugins_url( '/assets/css/admin.min.css', __FILE__ ), array(), $this->version );
 			}
 		}
 
