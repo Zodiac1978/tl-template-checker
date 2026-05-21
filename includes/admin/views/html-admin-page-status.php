@@ -5,6 +5,10 @@
  * @package TLTemplateChecker
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 ?>
 
 <div class="wrap">
