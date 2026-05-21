@@ -136,13 +136,12 @@ if ( ! class_exists( 'TLTemplateChecker' ) ) :
 endif;
 
 /**
- * Returns the main instance of TLTPLC to prevent the need to use globals.
+ * Returns the main instance of TPLC to prevent the need to use globals.
  *
- * @since  1.0.0
+ * @since 1.0.10
  */
-function TLTPLC() {
+function tplc() {
 	return TLTemplateChecker::instance();
 }
 
-// Global for backwards compatibility.
-$GLOBALS['tl-template-checker'] = TLTPLC();
+$GLOBALS['tplc_template_checker'] = tplc();
