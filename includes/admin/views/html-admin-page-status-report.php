@@ -120,7 +120,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php
 				printf(
 					/* translators: %1$s Name of child theme, %2$s Name of parent theme. */
-					__( 'Template overrides by %1$s for %2$s:', 'child-theme-check' ),
+					esc_html__( 'Template overrides by %1$s for %2$s:', 'child-theme-check' ),
 					'<abbr title="' . esc_attr__( 'Child Theme', 'child-theme-check' ) . '">' . esc_html( $theme ) . '</abbr>',
 					'<abbr title="' . esc_attr__( 'Parent Theme', 'child-theme-check' ) . '">' . esc_html( $template ) . '</abbr>'
 				);

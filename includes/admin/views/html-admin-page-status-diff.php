@@ -33,7 +33,37 @@ jQuery( function($) {
 			$scanned_files[ $plugin_name ] = TPLC_Admin_Status::scan_template_files( $template_path );
 		}
 
-		$message = __( 'There are no differences between child theme templates and parent theme templates.', 'child-theme-check' );
+		$message           = __( 'There are no differences between child theme templates and parent theme templates.', 'child-theme-check' );
+		$allowed_icon_html = array(
+			'span' => array(
+				'class' => array(),
+				'style' => array(),
+			),
+		);
+		$allowed_diff_html = array(
+			'table' => array(
+				'class' => array(),
+			),
+			'tbody' => array(),
+			'thead' => array(),
+			'tr'    => array(),
+			'th'    => array(
+				'class' => array(),
+				'colspan' => array(),
+			),
+			'td'    => array(
+				'class' => array(),
+				'colspan' => array(),
+			),
+			'div'   => array(
+				'class' => array(),
+			),
+			'span'  => array(
+				'class' => array(),
+			),
+			'del'   => array(),
+			'ins'   => array(),
+		);
 
 		foreach ( $scanned_files as $plugin_name => $files ) {
 			foreach ( $files as $file ) {
@@ -93,20 +123,20 @@ jQuery( function($) {
 							'<h3 class="trigger">%s %s %s</h3>',
 							esc_html__( 'Diff for template file:', 'child-theme-check' ),
 							esc_html( $file ),
-							$status
+							wp_kses( $status, $allowed_icon_html )
 						);
 
 						if ( version_compare( $GLOBALS['wp_version'], '5.7' ) >= 0 ) {
 							printf(
 								'<div class="diff-wrapper" style="display: none;">%s</div>',
-								$diff_table
+								wp_kses( $diff_table, $allowed_diff_html )
 							);
 						} else {
 							printf(
 								'<div class="diff-wrapper" style="display: none;"><table class="diff"><tr><th class="diffheader">%s: ' . esc_html( $template ) . '</th><th>&#160;</th><th class="diffheader">%s: ' . esc_html( $theme ) . '</th></tr></table>%s</div>',
 								esc_html__( 'Parent Theme', 'child-theme-check' ),
 								esc_html__( 'Child Theme', 'child-theme-check' ),
-								$diff_table
+								wp_kses( $diff_table, $allowed_diff_html )
 							);
 						}
 
@@ -117,7 +147,7 @@ jQuery( function($) {
 			}
 		}
 
-		echo $message;
+		echo esc_html( $message );
 
 		?>
 	</div>
