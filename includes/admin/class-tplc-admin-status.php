@@ -90,10 +90,21 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 			$keyword   = apply_filters( 'tl_tplc_version_keyword', '@version' );
 
 			if ( preg_match( '/^[ \t\/*#@]*' . preg_quote( $keyword, '/' ) . '(.*)$/mi', $file_data, $match ) && $match[1] ) {
-				$version = _cleanup_header_comment( $match[1] );
+				$version = self::cleanup_header_comment( $match[1] );
 			}
 
 			return $version;
+		}
+
+		/**
+		 * Clean trailing comment close tags from parsed file header values.
+		 *
+		 * @since 1.0.10
+		 * @param string $str Header value.
+		 * @return string
+		 */
+		private static function cleanup_header_comment( $str ) {
+			return trim( preg_replace( '/\s*(?:\*\/|\?>).*/', '', $str ) );
 		}
 
 		/**
