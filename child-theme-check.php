@@ -69,19 +69,8 @@ if ( ! class_exists( 'TLTemplateChecker' ) ) :
 		 * @since  1.0.0
 		 */
 		private function hooks() {
-			add_action( 'init', array( $this, 'init' ), 0 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_settings_link' ) );
-		}
-
-		/**
-		 * Init TLTemplateChecker when WordPress Initialises.
-		 *
-		 * @since  1.0.0
-		 */
-		public function init() {
-			// Set up localisation.
-			$this->load_plugin_textdomain();
 		}
 
 		/**
@@ -103,17 +92,6 @@ if ( ! class_exists( 'TLTemplateChecker' ) ) :
 		public function admin_styles() {
 			if ( is_admin() ) {
 				wp_enqueue_style( 'tplc_admin_styles', plugins_url( '/assets/css/admin.min.css', __FILE__ ), array(), $this->version );
-			}
-		}
-
-		/**
-		 * Load plugin textdomain.
-		 *
-		 * @since 1.0.0
-		 */
-		private function load_plugin_textdomain() {
-			if ( is_admin() ) {
-				load_plugin_textdomain( 'child-theme-check', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 			}
 		}
 
