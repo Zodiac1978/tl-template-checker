@@ -53,21 +53,14 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 */
 		public static function get_file_content( $file ) {
 
-			// Avoid notices if file does not exist.
-			if ( ! file_exists( $file ) ) {
+			// Avoid notices if file does not exist or cannot be read.
+			if ( ! is_file( $file ) || ! is_readable( $file ) ) {
 				return '';
 			}
 
-			// We don't need to write to the file, so just open for reading.
-			$handle = fopen( $file, 'r' ); // @codingStandardsIgnoreLine.
+			$content = file_get_contents( $file ); // @codingStandardsIgnoreLine.
 
-			// Pull full content.
-			$content = fread( $handle, filesize( $file ) ); // @codingStandardsIgnoreLine.
-
-			// PHP will close file handle, but we are good citizens.
-			fclose( $handle ); // @codingStandardsIgnoreLine.
-
-			return $content;
+			return false === $content ? '' : $content;
 		}
 
 
@@ -79,19 +72,17 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 */
 		public static function get_file_version( $file ) {
 
-			// Avoid notices if file does not exist.
-			if ( ! file_exists( $file ) ) {
+			// Avoid notices if file does not exist or cannot be read.
+			if ( ! is_file( $file ) || ! is_readable( $file ) ) {
 				return '';
 			}
 
-			// We don't need to write to the file, so just open for reading.
-			$fp = fopen( $file, 'r' ); // @codingStandardsIgnoreLine.
-
 			// Pull only the first 8kiB of the file in.
-			$file_data = fread( $fp, 8192 ); // @codingStandardsIgnoreLine.
+			$file_data = file_get_contents( $file, false, null, 0, 8192 ); // @codingStandardsIgnoreLine.
 
-			// PHP will close file handle, but we are good citizens.
-			fclose( $fp ); // @codingStandardsIgnoreLine.
+			if ( false === $file_data ) {
+				return '';
+			}
 
 			// Make sure we catch CR-only line endings.
 			$file_data = str_replace( "\r", "\n", $file_data );
