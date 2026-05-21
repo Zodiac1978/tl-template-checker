@@ -75,10 +75,19 @@ class TPLC_Admin_Notices {
 	 * Hide a notice if the GET variable is set.
 	 */
 	public function hide_notices() {
-		if ( isset( $_GET['hide_template_files_notice'] ) ) {
-			$hide_notice = sanitize_text_field( wp_unslash( $_GET['hide_template_files_notice'] ) );
-			self::remove_notice( $hide_notice );
+		if ( ! is_admin() || ! current_user_can( 'manage_options' ) || ! isset( $_GET['hide_template_files_notice'] ) ) {
+			return;
 		}
+
+		$hide_notice = sanitize_text_field( wp_unslash( $_GET['hide_template_files_notice'] ) );
+
+		if ( ! isset( self::$notices[ $hide_notice ] ) ) {
+			return;
+		}
+
+		check_admin_referer( 'tplc_hide_notice_' . $hide_notice );
+
+		self::remove_notice( $hide_notice );
 	}
 
 	/**
