@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/Zodiac1978/tl-template-checker/badges/gpa.svg)](https://codeclimate.com/github/Zodiac1978/tl-template-checker) [![Current Child Theme Check version](https://img.shields.io/wordpress/plugin/v/child-theme-check.svg)](https://wordpress.org/plugins/child-theme-check/) [![Number of downloads](https://img.shields.io/wordpress/plugin/dt/child-theme-check.svg)](https://wordpress.org/plugins/child-theme-check/advanced/) [![Number of active installs](https://img.shields.io/wordpress/plugin/installs/child-theme-check.svg)](https://wordpress.org/plugins/child-theme-check/advanced/) [![WordPress plugin rating](https://img.shields.io/wordpress/plugin/r/child-theme-check.svg)](https://wordpress.org/plugins/child-theme-check/#reviews) [![Donate with PayPal](https://img.shields.io/badge/PayPal-Donate-yellow.svg)](https://paypal.me/zodiac1978)
+[![Current Child Theme Check version](https://img.shields.io/wordpress/plugin/v/child-theme-check.svg)](https://wordpress.org/plugins/child-theme-check/) [![Number of downloads](https://img.shields.io/wordpress/plugin/dt/child-theme-check.svg)](https://wordpress.org/plugins/child-theme-check/advanced/) [![Number of active installs](https://img.shields.io/wordpress/plugin/installs/child-theme-check.svg)](https://wordpress.org/plugins/child-theme-check/advanced/) [![WordPress plugin rating](https://img.shields.io/wordpress/plugin/r/child-theme-check.svg)](https://wordpress.org/plugins/child-theme-check/#reviews) [![Donate with PayPal](https://img.shields.io/badge/PayPal-Donate-yellow.svg)](https://paypal.me/zodiac1978)
 
 # Child Theme Check
 
@@ -23,6 +23,9 @@ If this is the case you will see a warning if the version of the parent theme fi
 Thank you very much @WooThemes and @WooCommerce for using the GPL, so that I can grab so much of their code to build this plugin.
 
 ## Changelog
+
+### 1.0.10
+* Tested with WordPress 7.0
 
 ### 1.0.9
 * Tested with WordPress 6.6
