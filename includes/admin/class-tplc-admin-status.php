@@ -21,7 +21,7 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 * Handles output of the reports page in admin.
 		 */
 		public static function output() {
-			$current_tab = ! empty( $_REQUEST['tab'] ) ? sanitize_title( $_REQUEST['tab'] ) : 'status'; // @codingStandardsIgnoreLine.
+			$tplc_current_tab = ! empty( $_REQUEST['tab'] ) ? sanitize_title( $_REQUEST['tab'] ) : 'status'; // @codingStandardsIgnoreLine.
 
 			include_once 'views/html-admin-page-status.php';
 		}

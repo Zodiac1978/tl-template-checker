@@ -26,21 +26,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<h2 class="nav-tab-wrapper">
 			<?php
-			$tabs = array(
+			$tplc_tabs = array(
 				'status' => __( 'Status', 'child-theme-check' ),
 				'diff'   => __( 'Diff', 'child-theme-check' ),
 			);
-			foreach ( $tabs as $name => $label ) {
+			foreach ( $tplc_tabs as $tplc_name => $tplc_label ) {
 				printf( '<a href="%s" class="nav-tab %s">%s</a>',
-					esc_url( admin_url( 'admin.php?page=tplc-status&amp;tab=' . $name ) ),
-					$current_tab === $name ? 'nav-tab-active' : '',
-					esc_html( $label )
+					esc_url( admin_url( 'admin.php?page=tplc-status&amp;tab=' . $tplc_name ) ),
+					$tplc_current_tab === $tplc_name ? 'nav-tab-active' : '',
+					esc_html( $tplc_label )
 				);
 			}
 			?>
 		</h2><br/>
 		<?php
-		switch ( $current_tab ) {
+		switch ( $tplc_current_tab ) {
 			case 'diff':
 				TPLC_Admin_Status::status_diff();
 				break;

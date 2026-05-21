@@ -19,87 +19,87 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<tbody>
 	<?php
 
-	$template_paths = array( get_template_directory() . '/' );
+	$tplc_template_paths = array( get_template_directory() . '/' );
 
-	$scanned_files = array();
-	$found_files   = array();
-	foreach ( $template_paths as $plugin_name => $template_path ) {
-		$scanned_files[ $plugin_name ] = TPLC_Admin_Status::scan_template_files( $template_path );
+	$tplc_scanned_files = array();
+	$tplc_found_files   = array();
+	foreach ( $tplc_template_paths as $tplc_plugin_name => $tplc_template_path ) {
+		$tplc_scanned_files[ $tplc_plugin_name ] = TPLC_Admin_Status::scan_template_files( $tplc_template_path );
 	}
-	foreach ( $scanned_files as $plugin_name => $files ) {
-		foreach ( $files as $file ) {
+	foreach ( $tplc_scanned_files as $tplc_plugin_name => $tplc_files ) {
+		foreach ( $tplc_files as $tplc_file ) {
 
 			// Skip if no php file.
-			if ( ! strpos( $file, '.php' ) ) {
+			if ( ! strpos( $tplc_file, '.php' ) ) {
 				continue;
 			}
 
-			$child_path = get_stylesheet_directory() . '/' . $file;
+			$tplc_child_path = get_stylesheet_directory() . '/' . $tplc_file;
 
 			// Exclude functions.php.
-			if ( file_exists( $child_path ) && basename( $file ) !== 'functions.php' ) {
-				$theme_file = $child_path;
+			if ( file_exists( $tplc_child_path ) && basename( $tplc_file ) !== 'functions.php' ) {
+				$tplc_theme_file = $tplc_child_path;
 			} else {
-				$theme_file = false;
+				$tplc_theme_file = false;
 			}
 
-			if ( $theme_file ) {
-				$parent_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
-				$child_version  = TPLC_Admin_Status::get_file_version( $theme_file );
-				$template_file  = '<code>' . esc_html( basename( $theme_file ) ) . '</code>';
+			if ( $tplc_theme_file ) {
+				$tplc_parent_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $tplc_file );
+				$tplc_child_version  = TPLC_Admin_Status::get_file_version( $tplc_theme_file );
+				$tplc_template_file  = '<code>' . esc_html( basename( $tplc_theme_file ) ) . '</code>';
 
-				if ( $parent_version && $child_version && ( version_compare( $child_version, $parent_version, '<' ) ) ) {
-					$found_files[ $plugin_name ][] = sprintf(
+				if ( $tplc_parent_version && $tplc_child_version && ( version_compare( $tplc_child_version, $tplc_parent_version, '<' ) ) ) {
+					$tplc_found_files[ $tplc_plugin_name ][] = sprintf(
 						'%1$s %2$s: %3$s %4$s',
 						'<span class="dashicons dashicons-no-alt" style="color:red"></span>',
-						$template_file,
+						$tplc_template_file,
 						sprintf(
 							/* translators: %s Version number. */
 							__( 'Child theme version %s is out of date.', 'child-theme-check' ),
-							$child_version ? '<strong style="color:red">' . esc_html( $child_version ) . '</strong>' : '-'
+							$tplc_child_version ? '<strong style="color:red">' . esc_html( $tplc_child_version ) . '</strong>' : '-'
 						),
 						sprintf(
 							/* translators: %s Version number. */
 							__( 'Parent theme version is %s.', 'child-theme-check' ),
-							'<strong>' . esc_html( $parent_version ) . '</strong>'
+							'<strong>' . esc_html( $tplc_parent_version ) . '</strong>'
 						)
 					);
-				} elseif ( ! $child_version && $parent_version ) {
-					$found_files[ $plugin_name ][] = sprintf(
+				} elseif ( ! $tplc_child_version && $tplc_parent_version ) {
+					$tplc_found_files[ $tplc_plugin_name ][] = sprintf(
 						'%1$s %2$s: %3$s %4$s',
 						'<span class="dashicons dashicons-info" style="color:orange"></span>',
-						$template_file,
+						$tplc_template_file,
 						__( 'Child theme is missing version keyword.', 'child-theme-check' ),
 						sprintf(
 							/* translators: %s Version number. */
 							__( 'Parent theme version is %s.', 'child-theme-check' ),
-							'<strong>' . esc_html( $parent_version ) . '</strong>'
+							'<strong>' . esc_html( $tplc_parent_version ) . '</strong>'
 						)
 					);
-				} elseif ( ! $parent_version ) {
-					$found_files[ $plugin_name ][] = sprintf(
+				} elseif ( ! $tplc_parent_version ) {
+					$tplc_found_files[ $tplc_plugin_name ][] = sprintf(
 						'%1$s %2$s: %3$s',
 						'<span class="dashicons dashicons-minus"></span>',
-						$template_file,
+						$tplc_template_file,
 						__( 'Parent theme is missing version keyword.', 'child-theme-check' )
 					);
 				} else {
-					$found_files[ $plugin_name ][] = sprintf(
+					$tplc_found_files[ $tplc_plugin_name ][] = sprintf(
 						'%1$s %2$s: %3$s',
 						'<span class="dashicons dashicons-yes" style="color:green"></span>',
-						$template_file,
+						$tplc_template_file,
 						sprintf(
 							/* translators: %s Version number. */
 							__( 'Child theme version %s matches parent theme.', 'child-theme-check' ),
-							$child_version ? '<strong style="color:green">' . esc_html( $child_version ) . '</strong>' : '-'
+							$tplc_child_version ? '<strong style="color:green">' . esc_html( $tplc_child_version ) . '</strong>' : '-'
 						)
 					);
 				}
 			}
 		}
 	}
-	if ( $found_files ) {
-		$allowed_status_html = array(
+	if ( $tplc_found_files ) {
+		$tplc_allowed_status_html = array(
 			'br'     => array(),
 			'code'   => array(),
 			'strong' => array(
@@ -111,9 +111,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			),
 		);
 
-		foreach ( $found_files as $plugin_name => $found_plugin_files ) {
-			$theme    = wp_get_theme();
-			$template = wp_get_theme( $theme->template );
+		foreach ( $tplc_found_files as $tplc_plugin_name => $tplc_found_plugin_files ) {
+			$tplc_theme    = wp_get_theme();
+			$tplc_template = wp_get_theme( $tplc_theme->template );
 			?>
 			<tr>
 				<td>
@@ -121,14 +121,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 				printf(
 					/* translators: %1$s Name of child theme, %2$s Name of parent theme. */
 					esc_html__( 'Template overrides by %1$s for %2$s:', 'child-theme-check' ),
-					'<abbr title="' . esc_attr__( 'Child Theme', 'child-theme-check' ) . '">' . esc_html( $theme ) . '</abbr>',
-					'<abbr title="' . esc_attr__( 'Parent Theme', 'child-theme-check' ) . '">' . esc_html( $template ) . '</abbr>'
+					'<abbr title="' . esc_attr__( 'Child Theme', 'child-theme-check' ) . '">' . esc_html( $tplc_theme ) . '</abbr>',
+					'<abbr title="' . esc_attr__( 'Parent Theme', 'child-theme-check' ) . '">' . esc_html( $tplc_template ) . '</abbr>'
 				);
 				?>
 				</td>
 			</tr>
 			<tr>
-				<td><?php echo wp_kses( implode( '<br>', $found_plugin_files ), $allowed_status_html ); ?></td>
+				<td><?php echo wp_kses( implode( '<br>', $tplc_found_plugin_files ), $tplc_allowed_status_html ); ?></td>
 			</tr>
 
 			<?php
