@@ -46,51 +46,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 			if ( $theme_file ) {
 				$parent_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
 				$child_version  = TPLC_Admin_Status::get_file_version( $theme_file );
+				$template_file  = '<code>' . esc_html( basename( $theme_file ) ) . '</code>';
 
 				if ( $parent_version && $child_version && ( version_compare( $child_version, $parent_version, '<' ) ) ) {
 					$found_files[ $plugin_name ][] = sprintf(
 						'%1$s %2$s: %3$s %4$s',
 						'<span class="dashicons dashicons-no-alt" style="color:red"></span>',
-						'<code>' . basename( $theme_file ) . '</code>',
+						$template_file,
 						sprintf(
 							/* translators: %s Version number. */
 							__( 'Child theme version %s is out of date.', 'child-theme-check' ),
-							$child_version ? '<strong style="color:red">' . $child_version . '</strong>' : '-' 
+							$child_version ? '<strong style="color:red">' . esc_html( $child_version ) . '</strong>' : '-'
 						),
 						sprintf(
 							/* translators: %s Version number. */
 							__( 'Parent theme version is %s.', 'child-theme-check' ),
-							'<strong>' . $parent_version . '</strong>'
+							'<strong>' . esc_html( $parent_version ) . '</strong>'
 						)
 					);
 				} elseif ( ! $child_version && $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
 						'%1$s %2$s: %3$s %4$s',
 						'<span class="dashicons dashicons-info" style="color:orange"></span>',
-						'<code>' . basename( $theme_file ) . '</code>',
+						$template_file,
 						__( 'Child theme is missing version keyword.', 'child-theme-check' ),
 						sprintf(
 							/* translators: %s Version number. */
 							__( 'Parent theme version is %s.', 'child-theme-check' ),
-							'<strong>' . $parent_version . '</strong>'
+							'<strong>' . esc_html( $parent_version ) . '</strong>'
 						)
 					);
 				} elseif ( ! $parent_version ) {
 					$found_files[ $plugin_name ][] = sprintf(
 						'%1$s %2$s: %3$s',
 						'<span class="dashicons dashicons-minus"></span>',
-						'<code>' . basename( $theme_file ) . '</code>',
+						$template_file,
 						__( 'Parent theme is missing version keyword.', 'child-theme-check' )
 					);
 				} else {
 					$found_files[ $plugin_name ][] = sprintf(
 						'%1$s %2$s: %3$s',
 						'<span class="dashicons dashicons-yes" style="color:green"></span>',
-						'<code>' . basename( $theme_file ) . '</code>',
+						$template_file,
 						sprintf(
 							/* translators: %s Version number. */
 							__( 'Child theme version %s matches parent theme.', 'child-theme-check' ),
-							$child_version ? '<strong style="color:green">' . $child_version . '</strong>' : '-'
+							$child_version ? '<strong style="color:green">' . esc_html( $child_version ) . '</strong>' : '-'
 						)
 					);
 				}
@@ -98,6 +99,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 	}
 	if ( $found_files ) {
+		$allowed_status_html = array(
+			'br'     => array(),
+			'code'   => array(),
+			'strong' => array(
+				'style' => array(),
+			),
+			'span'   => array(
+				'class' => array(),
+				'style' => array(),
+			),
+		);
+
 		foreach ( $found_files as $plugin_name => $found_plugin_files ) {
 			$theme    = wp_get_theme();
 			$template = wp_get_theme( $theme->template );
@@ -115,7 +128,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</td>
 			</tr>
 			<tr>
-				<td><?php echo implode( '<br>', $found_plugin_files ); ?></td>
+				<td><?php echo wp_kses( implode( '<br>', $found_plugin_files ), $allowed_status_html ); ?></td>
 			</tr>
 
 			<?php
