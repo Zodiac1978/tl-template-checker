@@ -1,0 +1,9 @@
+includes:
+  - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+  - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+  level: 5
+  paths:
+    - child-theme-check.php
+    - uninstall.php
+    - includes
