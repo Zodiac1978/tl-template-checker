@@ -18,6 +18,20 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 	class TPLC_Admin_Status {
 
 		/**
+		 * Cached template override data for the current request.
+		 *
+		 * @var array|null
+		 */
+		private static $template_overrides = null;
+
+		/**
+		 * Cached template scans for the current request.
+		 *
+		 * @var array
+		 */
+		private static $template_file_scans = array();
+
+		/**
 		 * Handles output of the reports page in admin.
 		 */
 		public static function output() {
@@ -108,6 +122,95 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		}
 
 		/**
+		 * Get child theme template overrides and version metadata.
+		 *
+		 * @since 1.0.10
+		 * @return array
+		 */
+		public static function get_template_overrides() {
+			if ( null !== self::$template_overrides ) {
+				return self::$template_overrides;
+			}
+
+			self::$template_overrides = array();
+			$template_files           = self::get_parent_template_files();
+
+			foreach ( $template_files as $file ) {
+				if ( false === strpos( $file, '.php' ) ) {
+					continue;
+				}
+
+				$child_path = get_stylesheet_directory() . '/' . $file;
+
+				if ( ! file_exists( $child_path ) || 'functions.php' === basename( $file ) ) {
+					continue;
+				}
+
+				$parent_path    = get_template_directory() . '/' . $file;
+				$parent_version = self::get_file_version( $parent_path );
+				$child_version  = self::get_file_version( $child_path );
+				$status         = 'current';
+
+				if ( $parent_version && $child_version && version_compare( $child_version, $parent_version, '<' ) ) {
+					$status = 'outdated';
+				} elseif ( ! $child_version && $parent_version ) {
+					$status = 'missing_child_version';
+				} elseif ( ! $parent_version ) {
+					$status = 'missing_parent_version';
+				}
+
+				self::$template_overrides[] = array(
+					'file'           => $file,
+					'parent_path'    => $parent_path,
+					'child_path'     => $child_path,
+					'parent_version' => $parent_version,
+					'child_version'  => $child_version,
+					'status'         => $status,
+				);
+			}
+
+			return self::$template_overrides;
+		}
+
+		/**
+		 * Get cached parent theme template files.
+		 *
+		 * @since 1.0.10
+		 * @return array
+		 */
+		private static function get_parent_template_files() {
+			$theme     = wp_get_theme( get_template() );
+			$cache_key = 'tplc_template_files_' . md5( get_template() . '|' . get_template_directory() . '|' . $theme->get( 'Version' ) );
+			$files     = get_transient( $cache_key );
+
+			if ( is_array( $files ) ) {
+				return $files;
+			}
+
+			$files = self::scan_template_files( get_template_directory() . '/' );
+
+			set_transient( $cache_key, $files, (int) apply_filters( 'tplc_template_files_cache_ttl', DAY_IN_SECONDS ) );
+
+			return $files;
+		}
+
+		/**
+		 * Check whether there are outdated child theme template overrides.
+		 *
+		 * @since 1.0.10
+		 * @return bool
+		 */
+		public static function has_outdated_template_overrides() {
+			foreach ( self::get_template_overrides() as $override ) {
+				if ( 'outdated' === $override['status'] ) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		/**
 		 * Scan the template files.
 		 *
 		 * @access public
@@ -115,6 +218,10 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 		 * @return array
 		 */
 		public static function scan_template_files( $template_path ) {
+			if ( isset( self::$template_file_scans[ $template_path ] ) ) {
+				return self::$template_file_scans[ $template_path ];
+			}
+
 			$files  = @scandir( $template_path ); // @codingStandardsIgnoreLine.
 			$result = array();
 
@@ -135,6 +242,9 @@ if ( ! class_exists( 'TPLC_Admin_Status' ) ) :
 					}
 				}
 			}
+
+			self::$template_file_scans[ $template_path ] = $result;
+
 			return $result;
 		}
 	}

@@ -121,33 +121,7 @@ class TPLC_Admin_Notices {
 
 		require_once 'class-tplc-admin-status.php';
 
-		$template_path = get_template_directory() . '/';
-
-		$parent_theme_templates = TPLC_Admin_Status::scan_template_files( $template_path );
-		$outdated               = false;
-
-		foreach ( $parent_theme_templates as $file ) {
-			$theme_file = false;
-
-			$child_path = get_stylesheet_directory() . '/' . $file;
-
-			// Exclude functions.php.
-			if ( file_exists( $child_path ) && basename( $file ) !== 'functions.php' ) {
-				$theme_file = $child_path;
-			} else {
-				$theme_file = false;
-			}
-
-			if ( $theme_file ) {
-				$parent_version = TPLC_Admin_Status::get_file_version( get_template_directory() . '/' . $file );
-				$child_version  = TPLC_Admin_Status::get_file_version( $theme_file );
-
-				if ( $parent_version && $child_version && version_compare( $child_version, $parent_version, '<' ) ) {
-					$outdated = true;
-					break;
-				}
-			}
-		}
+		$outdated = TPLC_Admin_Status::has_outdated_template_overrides();
 
 		if ( $outdated ) {
 			include 'views/html-notice-template-check.php';
